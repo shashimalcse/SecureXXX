@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/phase2next"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"
@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/phase3back"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"
@@ -63,20 +63,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/sizetitle"
-            app:layout_constraintBottom_toTopOf="@+id/spinner2"
-            app:layout_constraintEnd_toEndOf="@+id/spinner2"
-            app:layout_constraintStart_toStartOf="@+id/spinner2" />
+            app:layout_constraintBottom_toTopOf="@+id/siezspinner"
+            app:layout_constraintEnd_toEndOf="@+id/siezspinner"
+            app:layout_constraintStart_toStartOf="@+id/siezspinner" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/colorspinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/spinnerbackground"
             app:layout_constraintBottom_toTopOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="@+id/spinner2"
+            app:layout_constraintEnd_toEndOf="@+id/siezspinner"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner2"
+            app:layout_constraintStart_toStartOf="@+id/siezspinner"
+            app:layout_constraintTop_toBottomOf="@+id/siezspinner"
             app:layout_constraintVertical_bias="0.154" />
 
         <ImageView
@@ -84,12 +84,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/colortitle"
-            app:layout_constraintBottom_toTopOf="@+id/spinner"
-            app:layout_constraintEnd_toEndOf="@+id/spinner"
-            app:layout_constraintStart_toStartOf="@+id/spinner" />
+            app:layout_constraintBottom_toTopOf="@+id/colorspinner"
+            app:layout_constraintEnd_toEndOf="@+id/colorspinner"
+            app:layout_constraintStart_toStartOf="@+id/colorspinner" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/siezspinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="116dp"

@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/phase3back"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"
@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/phase3next"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"

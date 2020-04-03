@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/phase1next"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"
