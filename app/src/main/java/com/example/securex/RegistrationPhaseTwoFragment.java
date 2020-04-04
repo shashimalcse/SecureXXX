@@ -12,11 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.securex.databinding.FragmentRegistrationPhaseOneBinding;
 import com.example.securex.databinding.FragmentRegistrationPhaseTwoBinding;
 
 
-public class RegistrationPhaseTwoFragment extends Fragment {
+public class RegistrationPhaseTwoFragment extends Fragment implements View.OnClickListener {
 
     private FragmentRegistrationPhaseTwoBinding binding;
 
@@ -39,6 +38,20 @@ public class RegistrationPhaseTwoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        
+        binding.phase2next.setOnClickListener(this);
+        binding.phase2back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.phase2next:
+                navController.navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment);
+                break;
+            case R.id.phase2back:
+                navController.navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseOneFragment);
+                break;
+        }
+
     }
 }
