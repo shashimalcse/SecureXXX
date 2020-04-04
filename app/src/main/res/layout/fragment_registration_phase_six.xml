@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/phase6beck"
+            android:id="@+id/phase6back"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="45dp"
             android:layout_height="50dp"

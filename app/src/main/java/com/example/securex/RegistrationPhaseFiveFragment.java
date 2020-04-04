@@ -2,17 +2,26 @@ package com.example.securex;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.securex.databinding.FragmentRegistrationPhaseFiveBinding;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistrationPhaseFiveFragment extends Fragment {
+public class RegistrationPhaseFiveFragment extends Fragment implements View.OnClickListener {
+
+    private FragmentRegistrationPhaseFiveBinding binding;
+    private NavController navController;
 
     public RegistrationPhaseFiveFragment() {
         // Required empty public constructor
@@ -22,7 +31,28 @@ public class RegistrationPhaseFiveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration_phase_five, container, false);
+        binding = FragmentRegistrationPhaseFiveBinding.inflate(inflater,container,false);
+        View view = binding.getRoot();
+        return view;
+  }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+        binding.phase5next.setOnClickListener(this);
+        binding.phase5back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.phase5next:
+                navController.navigate(R.id.action_registrationPhaseFiveFragment_to_registrationPhaseSixFragment);
+                break;
+            case R.id.phase5back:
+                navController.navigate(R.id.action_registrationPhaseFiveFragment_to_registrationPhaseFourFragment);
+                break;
+        }
     }
 }
