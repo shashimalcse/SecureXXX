@@ -51,7 +51,7 @@ public class RegistrationPhaseSixFragment extends Fragment implements View.OnCli
                 navController.navigate(R.id.action_registrationPhaseSixFragment_to_registrationPhaseFiveFragment);
                 break;
             case R.id.phase6confirm:
-                
+
         }
     }
 }
