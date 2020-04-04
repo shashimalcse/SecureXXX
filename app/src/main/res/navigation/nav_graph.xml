@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_registrationPhaseFiveFragment_to_registrationPhaseSixFragment"
             app:destination="@id/registrationPhaseSixFragment" />
+        <action
+            android:id="@+id/action_registrationPhaseFiveFragment_to_registrationPhaseFourFragment"
+            app:destination="@id/registrationPhaseFourFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseFourFragment"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_registrationPhaseFourFragment_to_registrationPhaseFiveFragment"
             app:destination="@id/registrationPhaseFiveFragment" />
+        <action
+            android:id="@+id/action_registrationPhaseFourFragment_to_registrationPhaseThreeFragment"
+            app:destination="@id/registrationPhaseThreeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseOneFragment"
@@ -36,7 +42,11 @@
         android:id="@+id/registrationPhaseSixFragment"
         android:name="com.example.securex.RegistrationPhaseSixFragment"
         android:label="fragment_registration_phase_six"
-        tools:layout="@layout/fragment_registration_phase_six" />
+        tools:layout="@layout/fragment_registration_phase_six" >
+        <action
+            android:id="@+id/action_registrationPhaseSixFragment_to_registrationPhaseFiveFragment"
+            app:destination="@id/registrationPhaseFiveFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registrationPhaseThreeFragment"
         android:name="com.example.securex.RegistrationPhaseThreeFragment"
@@ -45,6 +55,9 @@
         <action
             android:id="@+id/action_registrationPhaseThreeFragment_to_registrationPhaseFourFragment"
             app:destination="@id/registrationPhaseFourFragment" />
+        <action
+            android:id="@+id/action_registrationPhaseThreeFragment_to_registrationPhaseTwoFragment"
+            app:destination="@id/registrationPhaseTwoFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseTwoFragment"
@@ -54,5 +67,8 @@
         <action
             android:id="@+id/action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment"
             app:destination="@id/registrationPhaseThreeFragment" />
+        <action
+            android:id="@+id/action_registrationPhaseTwoFragment_to_registrationPhaseOneFragment"
+            app:destination="@id/registrationPhaseOneFragment" />
     </fragment>
 </navigation>
