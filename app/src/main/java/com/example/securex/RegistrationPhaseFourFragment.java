@@ -62,7 +62,7 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     if(!SelectedPositions.contains(position)){
-                        view.setBackgroundColor(getActivity().getResources().getColor(R.color.colorPrimaryDark));
+                        view.setBackgroundColor(getActivity().getResources().getColor(R.color.grey_800));
                         SelectedPositions.add(position);
                     }
                 }
@@ -106,7 +106,7 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
                     int end = SelectedPositions.size() - 1;
                     v = binding.gridview1.getChildAt(SelectedPositions.get(SelectedPositions.size()-1));
                     SelectedPositions.remove(SelectedPositions.get(SelectedPositions.size() - 1));
-                    v.setBackgroundColor(Color.WHITE);
+                    v.setBackgroundColor(getResources().getColor(R.color.trans));
                 }
                 break;
         }
