@@ -11,17 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/phase3back"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="45dp"
-            android:layout_height="50dp"
-            android:background="@drawable/backbutton"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
@@ -53,5 +42,29 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="200dp"
+            android:gravity="center"
+            android:numColumns="4"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            tools:layout_editor_absoluteX="1dp" />
+
+        <Button
+            android:id="@+id/fruitremove1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

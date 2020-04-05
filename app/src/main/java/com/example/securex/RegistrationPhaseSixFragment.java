@@ -40,16 +40,12 @@ public class RegistrationPhaseSixFragment extends Fragment implements View.OnCli
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        binding.phase6back.setOnClickListener(this);
         binding.phase6confirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.phase6back:
-                navController.navigate(R.id.action_registrationPhaseSixFragment_to_registrationPhaseFiveFragment);
-                break;
             case R.id.phase6confirm:
 
         }

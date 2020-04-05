@@ -46,18 +46,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/phase2back"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="45dp"
-            android:layout_height="50dp"
-
-            android:background="@drawable/backbutton"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintEnd_toStartOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView4" />
-
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
@@ -71,6 +59,8 @@
             android:id="@+id/colorspinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingBottom="5dp"
             android:background="@drawable/spinnerbackground"
             app:layout_constraintBottom_toTopOf="@+id/imageView4"
             app:layout_constraintEnd_toEndOf="@+id/siezspinner"
@@ -93,6 +83,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="116dp"
+            android:paddingLeft="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+
             android:background="@drawable/spinnerbackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

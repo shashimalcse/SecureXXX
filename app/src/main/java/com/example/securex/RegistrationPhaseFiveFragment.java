@@ -41,7 +41,7 @@ public class RegistrationPhaseFiveFragment extends Fragment implements View.OnCl
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         binding.phase5next.setOnClickListener(this);
-        binding.phase5back.setOnClickListener(this);
+
     }
 
     @Override
@@ -50,9 +50,7 @@ public class RegistrationPhaseFiveFragment extends Fragment implements View.OnCl
             case R.id.phase5next:
                 navController.navigate(R.id.action_registrationPhaseFiveFragment_to_registrationPhaseSixFragment);
                 break;
-            case R.id.phase5back:
-                navController.navigate(R.id.action_registrationPhaseFiveFragment_to_registrationPhaseFourFragment);
-                break;
+
         }
     }
 }
