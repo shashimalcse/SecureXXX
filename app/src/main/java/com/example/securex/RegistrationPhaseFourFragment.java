@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.securex.databinding.FragmentRegistrationPhaseFourBinding;
+import com.example.securex.viewmodel.RegistrationSharedViewModel;
+
+import java.util.ArrayList;
 
 
 /**
@@ -22,6 +25,11 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
 
     private FragmentRegistrationPhaseFourBinding binding;
     private NavController navController;
+    RegistrationSharedViewModel model;
+    ImageAdapter imageAdapter;
+    ArrayList<Integer> FruitsArray;
+    ArrayList<Integer> SelectedPositions;
+    private String Password;
 
     public RegistrationPhaseFourFragment() {
         // Required empty public constructor
