@@ -1,4 +1,4 @@
-package com.example.securex;
+package com.example.securex.registration;
 
 import android.os.Bundle;
 
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseTwoBinding;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 

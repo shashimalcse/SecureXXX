@@ -1,6 +1,5 @@
-package com.example.securex;
+package com.example.securex.registration;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.example.securex.databinding.FragmentRegistrationPhaseFourBinding;
+import com.example.securex.R;
+import com.example.securex.databinding.FragmentRegistrationPhaseThreeBinding;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
 import java.util.ArrayList;
@@ -25,17 +25,17 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistrationPhaseFourFragment extends Fragment implements View.OnClickListener {
+public class RegistrationPhaseThreeFragment extends Fragment implements View.OnClickListener {
 
-    private FragmentRegistrationPhaseFourBinding binding;
+    private FragmentRegistrationPhaseThreeBinding binding;
     private NavController navController;
     RegistrationSharedViewModel model;
     ImageAdapter imageAdapter;
     ArrayList<Integer> FruitsArray;
     ArrayList<Integer> SelectedPositions;
-    private String ConfirmPassword;
+    private String Password;
 
-    public RegistrationPhaseFourFragment() {
+    public RegistrationPhaseThreeFragment() {
         // Required empty public constructor
     }
 
@@ -43,9 +43,9 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentRegistrationPhaseFourBinding.inflate(inflater,container,false);
+        binding = FragmentRegistrationPhaseThreeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        return  view;
+        return view;
     }
 
     @Override
@@ -55,9 +55,12 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
         model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
         SelectedPositions = new ArrayList<>();
         setAdapter();
-        binding.phase4next.setOnClickListener(this);
+        binding.phase3next.setOnClickListener(this);
 
-        binding.gridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+        binding.gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
@@ -72,49 +75,49 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
             }
         });
 
-        binding.fruitremove2.setOnClickListener(this);
+
+        binding.fruitremove1.setOnClickListener(this);
+
+
 
 
     }
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.phase4next:
-                ConfirmPassword = "";
+            case R.id.phase3next:
+                Password = "";
                 int PasswordSize = SelectedPositions.size();
                 for(int i=0;i<SelectedPositions.size();i++){
 
-                    ConfirmPassword+=getActivity().getResources().getResourceEntryName(FruitsArray.get(SelectedPositions.get(i)));
+                    Password+=getActivity().getResources().getResourceEntryName(FruitsArray.get(SelectedPositions.get(i)));
 
                 }
-                if(!ConfirmPassword.equals("")){
-                    if(ConfirmPassword.equals(model.getPassword().getValue().toString())){
-
-                        navController.navigate(R.id.action_registrationPhaseFourFragment_to_registrationPhaseFiveFragment);
-
-                    }
-                    else {
-                        showError();;
-                    }
+                if (!Password.equals("")){
+                    model.setPassword(Password);
+                    navController.navigate(R.id.action_registrationPhaseThreeFragment_to_registrationPhaseFourFragment);
                 }
-                else showError();
-                  break;
-            case R.id.fruitremove2:
+                else {
+                    showError();
+                }
+
+                break;
+            case R.id.fruitremove1:
                 if(SelectedPositions.size()>0) {
                     int end = SelectedPositions.size() - 1;
-                    v = binding.gridview1.getChildAt(SelectedPositions.get(SelectedPositions.size()-1));
+                    v = binding.gridview.getChildAt(SelectedPositions.get(SelectedPositions.size()-1));
                     SelectedPositions.remove(SelectedPositions.get(SelectedPositions.size() - 1));
                     v.setBackgroundColor(getResources().getColor(R.color.trans));
                 }
                 break;
-        }
 
+
+        }
     }
     public void setAdapter() {
         imageAdapter = new ImageAdapter(getActivity().getApplication(),model.getSize().getValue().intValue());
-        binding.gridview1.setAdapter(imageAdapter);
+        binding.gridview.setAdapter(imageAdapter);
         getFruitsArray(imageAdapter);
     }
     public void getFruitsArray(ImageAdapter imageAdapter) {
@@ -122,6 +125,6 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
     }
 
     public void showError(){
-        Toast.makeText(getActivity().getApplicationContext(),"NOT MATCH",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getApplicationContext(),"SELECT IMAGES",Toast.LENGTH_SHORT).show();
     }
 }

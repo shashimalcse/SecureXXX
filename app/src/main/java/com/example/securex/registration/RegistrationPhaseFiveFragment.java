@@ -1,4 +1,4 @@
-package com.example.securex;
+package com.example.securex.registration;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseFiveBinding;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 import com.goodiebag.pinview.Pinview;

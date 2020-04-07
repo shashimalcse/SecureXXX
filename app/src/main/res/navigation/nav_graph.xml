@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registrationPhaseFiveFragment"
-        android:name="com.example.securex.RegistrationPhaseFiveFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseFiveFragment"
         android:label="fragment_registration_phase_five"
         tools:layout="@layout/fragment_registration_phase_five" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseFourFragment"
-        android:name="com.example.securex.RegistrationPhaseFourFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseFourFragment"
         android:label="fragment_registration_phase_four"
         tools:layout="@layout/fragment_registration_phase_four" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseOneFragment"
-        android:name="com.example.securex.RegistrationPhaseOneFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseOneFragment"
         android:label="fragment_registration_phase_one"
         tools:layout="@layout/fragment_registration_phase_one" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseSixFragment"
-        android:name="com.example.securex.RegistrationPhaseSixFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseSixFragment"
         android:label="fragment_registration_phase_six"
         tools:layout="@layout/fragment_registration_phase_six" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseThreeFragment"
-        android:name="com.example.securex.RegistrationPhaseThreeFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseThreeFragment"
         android:label="fragment_registration_phase_three"
         tools:layout="@layout/fragment_registration_phase_three" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseTwoFragment"
-        android:name="com.example.securex.RegistrationPhaseTwoFragment"
+        android:name="com.example.securex.registration.RegistrationPhaseTwoFragment"
         android:label="fragment_registration_phase_two"
         tools:layout="@layout/fragment_registration_phase_two" >
         <action

@@ -1,5 +1,6 @@
-package com.example.securex;
+package com.example.securex.registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.securex.databinding.FragmentRegistrationPhaseSixBinding;
+import com.example.securex.login.LoginActivity;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 import com.goodiebag.pinview.Pinview;
 
@@ -54,6 +56,7 @@ public class RegistrationPhaseSixFragment extends Fragment {
                     if(binding.pinview2.getValue().equals(model.getPin().getValue().toString())){
 
                         showSuccess();
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
                     }
                     else{
                         showError();
