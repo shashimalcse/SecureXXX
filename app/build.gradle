@@ -42,5 +42,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+    implementation 'com.github.GoodieBag:Pinview:v1.4'
+    implementation 'androidx.biometric:biometric:1.0.1'
+
 
 }

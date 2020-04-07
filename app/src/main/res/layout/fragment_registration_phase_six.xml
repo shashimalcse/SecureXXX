@@ -11,6 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/pinview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cursorVisible="true"
+            app:forceKeyboard="true"
+            app:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:password="true"
+            app:pinHeight="40dp"
+            app:pinLength="4"
+            app:pinWidth="40dp"
+            tools:layout_editor_absoluteX="0dp">
+        </com.goodiebag.pinview.Pinview>
+
         <ImageView
             android:id="@+id/imageView13"
             android:layout_width="wrap_content"
