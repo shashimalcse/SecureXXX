@@ -68,7 +68,7 @@
             app:layout_constraintTop_toTopOf="@+id/spinleftbutton" />
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/colorspin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="250dp"
@@ -79,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView16"
+            android:id="@+id/fruitspin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="250dp"

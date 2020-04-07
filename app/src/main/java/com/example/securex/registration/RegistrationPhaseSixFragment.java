@@ -54,7 +54,7 @@ public class RegistrationPhaseSixFragment extends Fragment {
             public void onDataEntered(Pinview pinview, boolean fromUser) {
                 if(!binding.pinview2.getValue().equals("")){
                     if(binding.pinview2.getValue().equals(model.getPin().getValue().toString())){
-
+                        model.saveUser(getContext());
                         showSuccess();
                         startActivity(new Intent(getActivity(), LoginActivity.class));
                     }
