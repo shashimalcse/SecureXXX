@@ -231,15 +231,15 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             Attempts++;
         }
         if (Attempts > 3) {
-//            view.setButtonStatus(false);
-//            view.startNextActivity();
+            binding.fruitpickupbutton.setEnabled(false);
+            navController.navigate(R.id.action_loginSpinFragment_to_loginFragment);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Attempts = 0;
                     SelectedFruits=0;
                     MatchingPassword="";
-//                    view.setButtonStatus(true);
+                    binding.fruitpickupbutton.setEnabled(true);
                 }
             }, 5000);
 
@@ -251,6 +251,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setCount(int selectedFruits) {
+        binding.textView.setText(Integer.toString(selectedFruits));
     }
 
     private void showError() {
