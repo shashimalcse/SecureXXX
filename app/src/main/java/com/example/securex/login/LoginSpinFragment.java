@@ -1,6 +1,7 @@
 package com.example.securex.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ import com.example.securex.data.SpinFour;
 import com.example.securex.data.SpinSix;
 import com.example.securex.data.User;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
+import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.viewmodel.LoginSharedViewModel;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
@@ -221,7 +223,8 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             SelectedFruits = 0;
             MatchingPassword="";
             showSuccess();
-//            startFinishActivity();
+            startActivity(new Intent(getActivity(), PasswordUpdateActivity.class));
+            getActivity().finish();
 
         }
         else if (!MatchingPassword.equals(UserPassword) && SelectedFruits == FruitsArray.size()) {
