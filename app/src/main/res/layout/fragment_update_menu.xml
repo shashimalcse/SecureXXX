@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/profilecontainer"
-            android:text="Change Color"
+            android:text="Change Email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@drawable/profilecontainer"
-            android:text="Button"
+            android:text="Change Color"
             app:layout_constraintBottom_toTopOf="@+id/chnageemailbutton"
             tools:layout_editor_absoluteX="228dp" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:background="@drawable/profilecontainer"
-            android:text="Button"
+            android:text="Change PIn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chnageemailbutton" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:background="@drawable/profilecontainer"
-            android:text="Button"
+            android:text="Chnage GRAPHICAL PASSWORD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/changepinbutton" />

@@ -55,10 +55,10 @@ public class UpdateMenuFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.changepinbutton:
                 navController.navigate(R.id.action_updateMenuFragment_to_updatePinPhaseOneFragment);
-                break;;
+                break;
             case R.id.chnagegrappassbutton:
                 navController.navigate(R.id.action_updateMenuFragment_to_updateGraphicalPhaseOneFragment);
-                break;;
+                break;
         }
     }
 }

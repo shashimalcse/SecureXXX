@@ -48,4 +48,29 @@ public class UserRepository {
 
     }
 
+    public void changeEmail(String email){
+
+        editor.putString("Email",email);
+        editor.apply();
+    }
+
+    public void changeColor(String color){
+
+        editor.putString("Color",color);
+        editor.apply();
+    }
+    public void changePin(String pin){
+
+        editor.putString("Pin",pin);
+        editor.apply();
+    }
+
+    public void changeGraphical(String Color,int Size,String Password){
+        editor.putString("Color",Color);
+        editor.putString("Password",Password);
+        editor.putInt("Size",Size);
+
+        editor.apply();
+    }
+
 }
