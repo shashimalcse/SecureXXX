@@ -50,9 +50,6 @@ public class UpdateMenuFragment extends Fragment implements View.OnClickListener
             case R.id.chnageemailbutton:
                 navController.navigate(R.id.action_updateMenuFragment_to_updateEmailFragment);
                 break;
-            case R.id.changecolorbutton:
-                navController.navigate(R.id.action_updateMenuFragment_to_updateColorFragment);
-                break;
             case R.id.changepinbutton:
                 navController.navigate(R.id.action_updateMenuFragment_to_updatePinPhaseOneFragment);
                 break;

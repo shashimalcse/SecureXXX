@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.goodiebag.pinview.Pinview
-            android:id="@+id/pinview1"
+            android:id="@+id/updatepinview1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cursorVisible="true"

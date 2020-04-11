@@ -71,12 +71,12 @@ public class UpdateGraphicalPhaseOneFragment extends Fragment implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.phase2next:
+            case R.id.updategraphicalphaseonenext:
                 Size=Integer.parseInt(binding.updatesiezspinner.getSelectedItem().toString());
                 Color=binding.updatecolorspinner.getSelectedItem().toString();
                 model.setColor(Color);
                 model.setSize(Size);
-                navController.navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment);
+                navController.navigate(R.id.action_updateGraphicalPhaseOneFragment_to_updateGraphicalPhaseTwoFragment);
                 break;
         }
 

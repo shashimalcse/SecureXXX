@@ -18,7 +18,7 @@ public class ImageAdapter extends BaseAdapter {
     Context ctx;
     int Size;
 
-    ImageAdapter(Context ctx ,int Size){
+    public ImageAdapter(Context ctx, int Size){
         this.ctx=ctx;
         this.Size=Size;
         imageID = new ArrayList<>();

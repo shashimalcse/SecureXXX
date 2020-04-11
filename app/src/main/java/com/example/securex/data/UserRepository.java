@@ -59,7 +59,7 @@ public class UserRepository {
         editor.putString("Color",color);
         editor.apply();
     }
-    public void changePin(String pin){
+    public void updatePin(String pin){
 
         editor.putString("Pin",pin);
         editor.apply();
