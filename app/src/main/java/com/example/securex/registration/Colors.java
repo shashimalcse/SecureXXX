@@ -1,4 +1,4 @@
-package com.example.securex;
+package com.example.securex.registration;
 
 public class Colors {
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationPhaseThreeFragment"
+    tools:context=".registration.RegistrationPhaseThreeFragment"
     android:background="@drawable/registrationbackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,14 +47,12 @@
             android:id="@+id/gridview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="200dp"
             android:gravity="center"
-            android:numColumns="4"
             android:horizontalSpacing="5dp"
+            android:numColumns="4"
             android:verticalSpacing="5dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="1dp" />
 
         <Button

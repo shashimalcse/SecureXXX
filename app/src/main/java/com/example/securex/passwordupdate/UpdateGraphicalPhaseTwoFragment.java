@@ -1,6 +1,5 @@
-package com.example.securex;
+package com.example.securex.passwordupdate;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,41 +9,39 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.example.securex.databinding.FragmentRegistrationPhaseThreeBinding;
+import com.example.securex.R;
+import com.example.securex.databinding.FragmentUpdateGraphicalPhaseOneBinding;
+import com.example.securex.databinding.FragmentUpdateGraphicalPhaseTwoBinding;
+import com.example.securex.registration.ImageAdapter;
+import com.example.securex.viewmodel.PasswordUpdateSharedViewModel;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
 import java.util.ArrayList;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class RegistrationPhaseThreeFragment extends Fragment implements View.OnClickListener {
+public class UpdateGraphicalPhaseTwoFragment extends Fragment implements View.OnClickListener{
 
-    private FragmentRegistrationPhaseThreeBinding binding;
+    private FragmentUpdateGraphicalPhaseTwoBinding binding;
     private NavController navController;
-    RegistrationSharedViewModel model;
+    private PasswordUpdateSharedViewModel model;
+
+
     ImageAdapter imageAdapter;
     ArrayList<Integer> FruitsArray;
     ArrayList<Integer> SelectedPositions;
     private String Password;
 
-    public RegistrationPhaseThreeFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentRegistrationPhaseThreeBinding.inflate(inflater, container, false);
+        binding = FragmentUpdateGraphicalPhaseTwoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         return view;
     }
@@ -52,21 +49,19 @@ public class RegistrationPhaseThreeFragment extends Fragment implements View.OnC
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         navController = Navigation.findNavController(view);
-        model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
+        model = new ViewModelProvider(requireActivity()).get(PasswordUpdateSharedViewModel.class);
         SelectedPositions = new ArrayList<>();
         setAdapter();
-        binding.phase3next.setOnClickListener(this);
+        binding.updategraphicalphasetwonext.setOnClickListener(this);
 
-
-
-
-        binding.gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.updategridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     if(!SelectedPositions.contains(position)){
-                        view.setBackgroundColor(getActivity().getResources().getColor(R.color.colorPrimaryDark));
+                        view.setBackgroundColor(getActivity().getResources().getColor(R.color.grey_800));
                         SelectedPositions.add(position);
                     }
                 }
@@ -77,17 +72,13 @@ public class RegistrationPhaseThreeFragment extends Fragment implements View.OnC
         });
 
 
-        binding.fruitremove1.setOnClickListener(this);
-
-
-
-
+        binding.updatefruitremove1.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.phase3next:
+            case R.id.updategraphicalphasetwonext:
                 Password = "";
                 int PasswordSize = SelectedPositions.size();
                 for(int i=0;i<SelectedPositions.size();i++){
@@ -97,7 +88,7 @@ public class RegistrationPhaseThreeFragment extends Fragment implements View.OnC
                 }
                 if (!Password.equals("")){
                     model.setPassword(Password);
-                    navController.navigate(R.id.action_registrationPhaseThreeFragment_to_registrationPhaseFourFragment);
+                    navController.navigate(R.id.action_updateGraphicalPhaseTwoFragment_to_updateGraphicalPhaseThreeFragment);
                 }
                 else {
                     showError();
@@ -107,18 +98,19 @@ public class RegistrationPhaseThreeFragment extends Fragment implements View.OnC
             case R.id.fruitremove1:
                 if(SelectedPositions.size()>0) {
                     int end = SelectedPositions.size() - 1;
-                    v = binding.gridview.getChildAt(SelectedPositions.get(SelectedPositions.size()-1));
+                    v = binding.updategridview.getChildAt(SelectedPositions.get(SelectedPositions.size()-1));
                     SelectedPositions.remove(SelectedPositions.get(SelectedPositions.size() - 1));
-                    v.setBackgroundColor(Color.WHITE);
+                    v.setBackgroundColor(getResources().getColor(R.color.trans));
                 }
                 break;
 
 
         }
     }
+
     public void setAdapter() {
         imageAdapter = new ImageAdapter(getActivity().getApplication(),model.getSize().getValue().intValue());
-        binding.gridview.setAdapter(imageAdapter);
+        binding.updategridview.setAdapter(imageAdapter);
         getFruitsArray(imageAdapter);
     }
     public void getFruitsArray(ImageAdapter imageAdapter) {

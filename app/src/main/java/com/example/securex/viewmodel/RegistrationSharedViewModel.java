@@ -1,8 +1,14 @@
 package com.example.securex.viewmodel;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.securex.data.User;
+import com.example.securex.data.UserRepository;
 
 public class RegistrationSharedViewModel  extends ViewModel {
 
@@ -50,5 +56,25 @@ public class RegistrationSharedViewModel  extends ViewModel {
     }
     public LiveData<Integer> getSize(){
         return Size;
+    }
+
+
+
+
+    public void saveUser(Context context){
+        UserRepository userRepository = new UserRepository(context);
+        if (getUsername().getValue().toString().equals("")){
+            Log.d("USER","FUCKED");
+        }
+        User user = new User(getUsername().getValue().toString(),getEmail().getValue().toString(),getColor().getValue().toString(),getPin().getValue().toString(),Integer.parseInt(getSize().getValue().toString()),getPassword().getValue().toString());
+        userRepository.saveUser(user);
+    }
+
+    public void saveDetails(Context context){
+        UserRepository userRepository = new UserRepository(context);
+        User user =userRepository.getUser();
+        User newuser = new User(user.getUsername(),user.getEmail(),getColor().getValue().toString(),getPin().getValue().toString(),Integer.parseInt(getSize().getValue().toString()),getPassword().getValue().toString());
+        userRepository.saveUser(newuser);
+
     }
 }

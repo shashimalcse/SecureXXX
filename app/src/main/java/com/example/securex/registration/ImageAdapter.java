@@ -1,4 +1,4 @@
-package com.example.securex;
+package com.example.securex.registration;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 
+import com.example.securex.R;
+
 import java.util.ArrayList;
 
 public class ImageAdapter extends BaseAdapter {
@@ -16,7 +18,7 @@ public class ImageAdapter extends BaseAdapter {
     Context ctx;
     int Size;
 
-    ImageAdapter(Context ctx ,int Size){
+    public ImageAdapter(Context ctx, int Size){
         this.ctx=ctx;
         this.Size=Size;
         imageID = new ArrayList<>();
