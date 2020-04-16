@@ -73,4 +73,10 @@ public class UserRepository {
         editor.apply();
     }
 
+    public String getEmail(){
+        return pref.getString("Email",null);
+    }
+
+
+
 }

@@ -45,5 +45,9 @@ dependencies {
     implementation 'com.github.GoodieBag:Pinview:v1.4'
     implementation 'androidx.biometric:biometric:1.0.1'
 
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+
 
 }

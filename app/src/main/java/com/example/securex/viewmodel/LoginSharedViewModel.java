@@ -11,6 +11,18 @@ import com.example.securex.data.UserRepository;
 
 public class LoginSharedViewModel extends ViewModel {
     MutableLiveData<User> userLiveData = new MutableLiveData<>() ;
+    MutableLiveData<String> resetcode = new MutableLiveData<>();
+
+
+
+
+
+    public void setResetcode(String code){
+        resetcode.setValue(code);
+    }
+    public String getResetCode(){
+        return resetcode.getValue().toString();
+    }
 
 
 

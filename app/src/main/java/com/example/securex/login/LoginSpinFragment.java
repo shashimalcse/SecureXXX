@@ -1,6 +1,8 @@
 package com.example.securex.login;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,6 +34,7 @@ import com.example.securex.data.SpinSix;
 import com.example.securex.data.User;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
+import com.example.securex.utils.ForgetPassword;
 import com.example.securex.viewmodel.LoginSharedViewModel;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
@@ -89,6 +92,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
 
         fingerprint();
         binding.biobutton.setOnClickListener(this);
+        binding.forgetbutton.setOnClickListener(this);
     }
 
 
@@ -110,7 +114,36 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             case R.id.biobutton:
                 biometricPrompt.authenticate(promptInfo);
                 break;
+            case  R.id.forgetbutton:
+
+                promptalert();
+                break;
         }
+    }
+
+    private void promptalert() {
+        Log.d("FORGET","CLICKED");
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Forgot the Password? send Verification code to the emal? ")
+                .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            String resetCode = ForgetPassword.sendEmail(getContext());
+                            model.setResetcode(resetCode);
+                            navController.navigate(R.id.action_loginSpinFragment_to_forgetPasswordFragment);
+                        }
+                        catch (Exception e){
+                            Toast.makeText(getContext(),"Something Wrong",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 
     private void spinright() {
