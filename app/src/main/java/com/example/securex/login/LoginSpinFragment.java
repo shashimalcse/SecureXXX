@@ -320,6 +320,9 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(getContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
                 showSuccess();
+                startActivity(new Intent(getActivity(), PasswordUpdateActivity.class));
+                getActivity().finish();
+
             }
 
             @Override
