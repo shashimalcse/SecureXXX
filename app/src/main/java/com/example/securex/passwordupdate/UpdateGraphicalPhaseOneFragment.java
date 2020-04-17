@@ -1,5 +1,7 @@
 package com.example.securex.passwordupdate;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,9 @@ import android.widget.ArrayAdapter;
 
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentUpdateGraphicalPhaseOneBinding;
+import com.example.securex.login.LoginActivity;
 import com.example.securex.registration.Colors;
+import com.example.securex.registration.MainActivity;
 import com.example.securex.viewmodel.PasswordUpdateSharedViewModel;
 
 
@@ -104,4 +108,6 @@ public class UpdateGraphicalPhaseOneFragment extends Fragment implements View.On
         colorAd.setDropDownViewResource(R.layout.spinnertext);
         binding.updatecolorspinner.setAdapter(colorAd);
     }
-}
+
+
+    }

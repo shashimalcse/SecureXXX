@@ -2,6 +2,8 @@ package com.example.securex.login;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentForgetPasswordBinding;
+import com.example.securex.registration.MainActivity;
 import com.example.securex.utils.ForgetPassword;
 import com.example.securex.viewmodel.LoginSharedViewModel;
 import com.goodiebag.pinview.Pinview;
@@ -31,6 +34,9 @@ public class ForgetPasswordFragment extends Fragment {
     LoginSharedViewModel model;
     NavController navController;
     FragmentForgetPasswordBinding binding;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+
 
 
     @Override
@@ -46,6 +52,8 @@ public class ForgetPasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(LoginSharedViewModel.class);
+        pref = getContext().getSharedPreferences("com.android.app.users",getContext().MODE_PRIVATE);
+        editor=pref.edit();
 
         binding.notgetthecode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +66,9 @@ public class ForgetPasswordFragment extends Fragment {
             @Override
             public void onDataEntered(Pinview pinview, boolean fromUser) {
                 if (binding.pinviewforget.getValue().equals(model.getResetCode())){
-                    navController.navigate(R.id.action_forgetPasswordFragment_to_registrationPhaseTwoFragment2);
+                    editor.putString("UserStatus","ForgotPassword");
+                    editor.apply();
+                    startActivity(new Intent(getActivity(), MainActivity.class));
                 }
                 else{
                     Toast.makeText(getContext(),"WrongCode",Toast.LENGTH_SHORT).show();

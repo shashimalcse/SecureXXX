@@ -1,7 +1,9 @@
 package com.example.securex.viewmodel;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -62,12 +64,19 @@ public class RegistrationSharedViewModel  extends ViewModel {
 
 
     public void saveUser(Context context){
+        isForget(context);
         UserRepository userRepository = new UserRepository(context);
-        if (getUsername().getValue().toString().equals("")){
-            Log.d("USER","FUCKED");
-        }
         User user = new User(getUsername().getValue().toString(),getEmail().getValue().toString(),getColor().getValue().toString(),getPin().getValue().toString(),Integer.parseInt(getSize().getValue().toString()),getPassword().getValue().toString());
         userRepository.saveUser(user);
+    }
+    public void isForget(Context context) {
+        SharedPreferences pref = context.getSharedPreferences("com.android.app.users",context.MODE_PRIVATE);
+        String status = pref.getString("UserStatus","K");
+        if(status.equals("ForgotPassword")){
+            setUsername(pref.getString("Username",null));
+            setEmail(pref.getString("Email",null));
+        }
+
     }
 
     public void saveDetails(Context context){

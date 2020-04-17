@@ -35,7 +35,6 @@ public class UserRepository {
 
     public void saveUser(User user) {
         editor.clear();
-
         editor.putString("Username",user.getUsername());
         editor.putString("Email",user.getEmail());
         editor.putString("Color",user.getColor());

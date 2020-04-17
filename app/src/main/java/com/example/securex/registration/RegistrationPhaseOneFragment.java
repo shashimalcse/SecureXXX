@@ -1,5 +1,7 @@
 package com.example.securex.registration;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseOneBinding;
+import com.example.securex.login.LoginActivity;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
 
@@ -48,6 +51,7 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        isForget(view);
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
@@ -133,6 +137,15 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
     public void showEmailError() {
         binding.email.setError("Not Valid");
 
+    }
+
+    public void isForget(View view) {
+        SharedPreferences pref = getContext().getSharedPreferences("com.android.app.users",getContext().MODE_PRIVATE);
+        String status = pref.getString("UserStatus","K");
+        if(status.equals("ForgotPassword")){
+                navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_registrationPhaseOneFragment_to_registrationPhaseTwoFragment);
+        }
     }
 
 }

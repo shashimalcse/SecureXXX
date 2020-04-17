@@ -1,6 +1,7 @@
 package com.example.securex.registration;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseSixBinding;
 import com.example.securex.login.LoginActivity;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
@@ -57,6 +59,7 @@ public class RegistrationPhaseSixFragment extends Fragment {
                         model.saveUser(getContext());
                         showSuccess();
                         startActivity(new Intent(getActivity(), LoginActivity.class));
+                        getActivity().finish();
                     }
                     else{
                         showError();
@@ -75,6 +78,8 @@ public class RegistrationPhaseSixFragment extends Fragment {
     public void showError(){
         Toast.makeText(getContext(),"ERROR",Toast.LENGTH_SHORT).show();;
     }
+
+
 
 
 }
