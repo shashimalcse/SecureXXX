@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.securex.R;
+import com.example.securex.applock.AppLockActivity;
 import com.example.securex.databinding.FragmentLoginPinBinding;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
@@ -49,7 +50,7 @@ public class LoginPinFragment extends Fragment {
             public void onDataEntered(Pinview pinview, boolean fromUser) {
                 if(binding.PinUnlock.getValue().equals(model.getUser(getContext()).getPin())){
                     showSuccess();
-                    startActivity(new Intent(getActivity(), PasswordUpdateActivity.class));
+                    startActivity(new Intent(getActivity(), AppLockActivity.class));
                     getActivity().finish();
                 }
                 else {
