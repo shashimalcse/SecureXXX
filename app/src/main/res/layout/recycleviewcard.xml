@@ -20,7 +20,6 @@
                 android:layout_width="93dp"
                 android:layout_height="90dp"
                 app:layout_constraintBottom_toBottomOf="@+id/description"
-                app:layout_constraintEnd_toStartOf="@+id/description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/description"
                 app:srcCompat="@drawable/apple" />
@@ -34,6 +33,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/description" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

@@ -6,6 +6,7 @@ public class Application {
 
     private String Name;
     private Drawable Icon;
+    private boolean isLock;
 
     public Application(String name, Drawable icon) {
         Name = name;
@@ -18,5 +19,13 @@ public class Application {
 
     public Drawable getIcon() {
         return Icon;
+    }
+
+    public boolean isLock() {
+        return isLock;
+    }
+
+    public void setLock(boolean lock) {
+        isLock = lock;
     }
 }

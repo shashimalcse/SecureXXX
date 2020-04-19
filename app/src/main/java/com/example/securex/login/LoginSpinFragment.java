@@ -26,6 +26,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
 import com.example.securex.applock.AppListAdapter;
 import com.example.securex.applock.AppLockActivity;
@@ -258,7 +259,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             SelectedFruits = 0;
             MatchingPassword="";
             showSuccess();
-            startActivity(new Intent(getActivity(), AppLockActivity.class));
+            startActivity(new Intent(getActivity(), BottomNavActivity.class));
             getActivity().finish();
 
         }
@@ -322,7 +323,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(getContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
                 showSuccess();
-                startActivity(new Intent(getActivity(), AppLockActivity.class));
+                startActivity(new Intent(getActivity(), BottomNavActivity.class));
                 getActivity().finish();
 
             }
