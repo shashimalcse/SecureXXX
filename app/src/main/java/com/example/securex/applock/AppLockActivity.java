@@ -29,9 +29,11 @@ public class AppLockActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.profile:
                         startActivity(new Intent(AppLockActivity.this, PasswordUpdateActivity.class));
+                        finish();
                         break;
                     case R.id.home:
                         startActivity(new Intent(AppLockActivity.this, BottomNavActivity.class));
+                        finish();
                         break;
 
                 }

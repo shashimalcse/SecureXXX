@@ -28,9 +28,11 @@ public class PasswordUpdateActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.applock:
                         startActivity(new Intent(PasswordUpdateActivity.this, AppLockActivity.class));
+                        finish();
                         break;
                     case R.id.home:
                         startActivity(new Intent(PasswordUpdateActivity.this, BottomNavActivity.class));
+                        finish();
                         break;
 
                 }

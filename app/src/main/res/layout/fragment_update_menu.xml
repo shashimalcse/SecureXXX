@@ -22,16 +22,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/changecolorbutton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/profilecontainer"
-            android:text="Change Color"
-            app:layout_constraintBottom_toTopOf="@+id/chnageemailbutton"
-            tools:layout_editor_absoluteX="228dp" />
-
-        <Button
             android:id="@+id/changepinbutton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

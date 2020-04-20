@@ -37,7 +37,6 @@ public class UpdateMenuFragment extends Fragment implements View.OnClickListener
         navController = Navigation.findNavController(view);
 
         binding.chnageemailbutton.setOnClickListener(this);
-        binding.changecolorbutton.setOnClickListener(this);
         binding.chnagegrappassbutton.setOnClickListener(this);
         binding.changepinbutton.setOnClickListener(this);
 

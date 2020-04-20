@@ -28,9 +28,11 @@ public class BottomNavActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.applock:
                         startActivity(new Intent(BottomNavActivity.this, AppLockActivity.class));
+                        finish();
                         break;
                     case R.id.profile:
                         startActivity(new Intent(BottomNavActivity.this, PasswordUpdateActivity.class));
+                        finish();
                         break;
 
                 }
