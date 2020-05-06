@@ -2,6 +2,7 @@ package com.example.securex.applock;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,5 +42,6 @@ public class AppLockActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 }

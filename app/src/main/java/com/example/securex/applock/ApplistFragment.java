@@ -1,5 +1,6 @@
 package com.example.securex.applock;
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentApplistBinding;
+import com.gun0912.tedpermission.TedPermission;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -55,19 +57,33 @@ public class ApplistFragment extends Fragment {
         applicationInfos=getActivity().getPackageManager().getInstalledPackages(0);
         List<Application> apps = new ArrayList<>();
 
+
+
         for (int i=0;i<applicationInfos.size();i++){
             PackageInfo packageInfo = applicationInfos.get(i);
             if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM)==0){
                 Application application = new Application(packageInfo.applicationInfo.loadLabel(getActivity().getPackageManager()).toString(),packageInfo.applicationInfo.loadIcon(getActivity().getPackageManager()));
                 apps.add(application);
                 String appName = packageInfo.applicationInfo.loadLabel(getActivity().getPackageManager()).toString();
-                Log.d("APP",appName);
+                String packageName = packageInfo.applicationInfo.packageName;
+                Log.d("APP",packageName);
             }
         }
+
+        binding.permission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),PermissionActivity.class));
+            }
+        });
+
+
 
         AppListAdapter appListAdapter = new AppListAdapter(getContext(),apps);
         recyclerView.setAdapter(appListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }
+
+
 }
