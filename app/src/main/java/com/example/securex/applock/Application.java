@@ -7,10 +7,13 @@ public class Application {
     private String Name;
     private Drawable Icon;
     private boolean isLock;
+    private String Package;
 
-    public Application(String name, Drawable icon) {
+    public Application(String name, Drawable icon,String apackage) {
         Name = name;
         Icon = icon;
+        Package =apackage;
+
     }
 
     public String getName() {
@@ -27,5 +30,9 @@ public class Application {
 
     public void setLock(boolean lock) {
         isLock = lock;
+    }
+
+    public String getPackage() {
+        return Package;
     }
 }

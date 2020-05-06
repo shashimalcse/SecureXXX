@@ -62,7 +62,7 @@ public class ApplistFragment extends Fragment {
         for (int i=0;i<applicationInfos.size();i++){
             PackageInfo packageInfo = applicationInfos.get(i);
             if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM)==0){
-                Application application = new Application(packageInfo.applicationInfo.loadLabel(getActivity().getPackageManager()).toString(),packageInfo.applicationInfo.loadIcon(getActivity().getPackageManager()));
+                Application application = new Application(packageInfo.applicationInfo.loadLabel(getActivity().getPackageManager()).toString(),packageInfo.applicationInfo.loadIcon(getActivity().getPackageManager()),packageInfo.applicationInfo.packageName);
                 apps.add(application);
                 String appName = packageInfo.applicationInfo.loadLabel(getActivity().getPackageManager()).toString();
                 String packageName = packageInfo.applicationInfo.packageName;

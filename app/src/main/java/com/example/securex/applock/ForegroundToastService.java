@@ -21,7 +21,9 @@ import androidx.core.app.NotificationCompat;
 import com.example.securex.R;
 import com.rvalerio.fgchecker.AppChecker;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ForegroundToastService extends Service {
 
@@ -34,6 +36,9 @@ public class ForegroundToastService extends Service {
     Intent dialogIntent;
     String current_app;
     String prev_app;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+    List<String> locked_apps;
 
 
     public static void start(Context context) {
@@ -53,15 +58,30 @@ public class ForegroundToastService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        dialogIntent = new Intent(this,UnlockActivity.class);
+        dialogIntent = new Intent(getApplicationContext(),UnlockActivity.class);
         dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         registerReceivers();
         startChecker();
         createNotificationChannel();
         createStickyNotification();
         current_app="";
-        prev_app="";
+        prev_app="1";
         unlocked=false;
+        locked_apps = new ArrayList<>();
+        pref = getApplicationContext().getSharedPreferences("com.android.app.users",getApplicationContext().MODE_PRIVATE);
+        editor=pref.edit();
+        Map<String, ?> prefsMap = pref.getAll();
+        for (Map.Entry<String, ?> entry: prefsMap.entrySet()) {
+            Log.v("SharedPreferences", entry.getKey() + ":" +
+                    entry.getValue().toString());
+            if(entry.getValue().toString().equals("locked")){
+                locked_apps.add(entry.getKey());
+
+            }
+        }
+        for (String packgae:locked_apps){
+            Log.d("names",packgae);
+        }
     }
 
     @Override
@@ -98,35 +118,22 @@ public class ForegroundToastService extends Service {
                 .whenOther(new AppChecker.Listener() {
                     @Override
                     public void onForeground(final String packageName) {
-                        Log.d("PACKGE",packageName);
-                        Log.d("CURRET",current_app);
-                        Log.d("PREV",prev_app);
-                        if(packageName.equals("com.example.lock") && !current_app.equals(packageName) && !prev_app.equals(current_app)){
-                            Log.d("CHECK","FUCK");
-                            unlocked=true;
+                        String app= pref.getString("current_app","");
+                        Log.d("PACKAGE",packageName);
+                        Log.d("CURRENT",app);
+                        if(locked_apps.contains(packageName) && !app.equals(packageName)){
+
+
                             startActivity(dialogIntent);
-                            new android.os.Handler().postDelayed(
-                                    new Runnable() {
-                                        public void run() {
-                                            current_app=packageName;
-
-                                        }
-                                    },
-                                    200);
-
-
-
-
-
+//                            editor.putString("current_app",packageName);
+//                            editor.commit();
+                        current_app=packageName;
+                     }
+                        else if(!packageName.equals(current_app)){
+//                            editor.putString("current_app","");
+//                            editor.commit();
+//                            current_app="";
                         }
-                        if(unlocked && !packageName.equals(current_app)){
-                            prev_app=current_app;
-                            current_app=packageName;
-                        }
-
-
-
-//                        Toast.makeText(getBaseContext(), "Foreground: " + packageName, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .timeout(100)

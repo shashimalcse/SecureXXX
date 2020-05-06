@@ -21,15 +21,22 @@ public class UnlockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unlock);
         Button button = (Button) findViewById(R.id.unlock);
+        Log.d("FUCKCCCKKKK","FUCKKKKKKKKKKKKK");
 
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.lock");
-                startActivity( launchIntent );
+//                Intent launchIntent = getPackageManager().getLaunchIntentForPackage(current_app);
+//                startActivity( launchIntent );
                 finish();
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
