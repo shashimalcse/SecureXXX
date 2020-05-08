@@ -4,12 +4,7 @@ package com.example.securex.registration;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.testing.FragmentScenario;
-import androidx.navigation.Navigation;
-import androidx.navigation.testing.TestNavHostController;
-import androidx.test.core.app.ActivityScenario;
+
 import androidx.test.core.app.ApplicationProvider;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -30,7 +25,7 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 //@RunWith(AndroidJUnit4.class)
-public class RegistrationPhaseOneFragmentTest {
+public class RegistrationPhaseOneFragmentInstrumentedTest {
 
     private static final String TEST_EMAIL = "shashimal@gmail.com";
     private static final String TEST_USERNAME = "shashimal4";
@@ -42,10 +37,29 @@ public class RegistrationPhaseOneFragmentTest {
 
     RegistrationPhaseOneFragment registrationPhaseOneFragment = new RegistrationPhaseOneFragment();
 
+    @Test
+    public void validateEmail(){
+        boolean valid =registrationPhaseOneFragment.isValidEmail(TEST_EMAIL);
+        assertEquals(valid,true);
+    }
+    @Test
+    public void validateUsername(){
+        boolean valid=registrationPhaseOneFragment.isValidUsername(TEST_USERNAME);
+        assertEquals(valid,true);
+    }
 
     @Test
-    public void editUsername(){
+    public void username_email_validation(){
+
+        String result=registrationPhaseOneFragment.Validation(TEST_USERNAME,TEST_EMAIL);
+        assertEquals(result,"valid");
+
+    }
+    @Test
+    public void EdiTextTest(){
         onView(withId(R.id.username)).perform(typeText(TEST_USERNAME),closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(TEST_EMAIL),closeSoftKeyboard());
+        onView(withId(R.id.phase1next)).perform(click());
     }
 
 

@@ -1,17 +1,7 @@
 package com.example.securex.registration;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +9,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.util.PatternsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseOneBinding;
-import com.example.securex.login.LoginActivity;
 import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
 
@@ -134,7 +131,7 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
 
 
     public boolean isValidEmail(String email) {
-        return (Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.length()>0);
+        return (PatternsCompat.EMAIL_ADDRESS.matcher(email).matches() && email.length()>0);
     }
     public boolean isValidUsername(String username){
         return (username.matches(USERNAME_PATTERN) && username.length()>=6);
