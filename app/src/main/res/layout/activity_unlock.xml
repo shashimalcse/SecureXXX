@@ -4,15 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".applock.UnlockActivity">
+    tools:context=".applock.UnlockActivity"
+    android:background="@drawable/registrationbackground">
 
-    <Button
-        android:id="@+id/unlock"
+    <TextView
+        android:id="@+id/PinDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="Enter PIN"
+        app:layout_constraintBottom_toTopOf="@+id/PinUnlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.goodiebag.pinview.Pinview
+        android:id="@+id/PinUnlockApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cursorVisible="true"
+        app:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:password="true"
+        app:pinHeight="40dp"
+        app:pinLength="4"
+        app:pinWidth="40dp"
+        tools:layout_editor_absoluteX="0dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

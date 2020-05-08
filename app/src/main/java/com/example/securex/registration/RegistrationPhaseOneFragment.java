@@ -16,6 +16,8 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.securex.R;
 import com.example.securex.databinding.FragmentRegistrationPhaseOneBinding;
@@ -31,6 +33,10 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
 
     private String Username;
     private String Email;
+
+    Button button;
+    EditText username_;
+    EditText email_;
 
     private final String USERNAME_PATTERN = "^[a-z0-9_-]{3,15}$";
 
@@ -49,12 +55,17 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
 
 
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         isForget(view);
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
         model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
+
+
+
         binding.phase1next.setOnClickListener(this);
     }
 
@@ -100,17 +111,17 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
     public String Validation(String username, String email) {
         String validateState;
 
-        if (isValidEmail(Email) && isValidUsername(username)) {
+        if (isValidEmail(email) && isValidUsername(username)) {
             validateState="valid";
         }
 
-        else if (!isValidUsername(username) && !isValidEmail(Email)) {
+        else if (!isValidUsername(username) && !isValidEmail(email)) {
             validateState="not valid";
         }
         else if(!isValidUsername(username)){
             validateState="Username not valid";
         }
-        else if(!isValidEmail(Email)){
+        else if(!isValidEmail(email)){
             validateState="Email not valid";
         }
         else {

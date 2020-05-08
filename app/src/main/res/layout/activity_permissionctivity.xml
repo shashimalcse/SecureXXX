@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".applock.PermissionActivity">
+    tools:context=".applock.PermissionActivity"
+    android:background="@drawable/registrationbackground">
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/usageperm"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:background="@drawable/roundbutton"
+        android:text="GET PERMISSION"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,9 +22,12 @@
 
     <Button
         android:id="@+id/statperm"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:background="@drawable/roundbutton"
+        android:text="Start AppLock"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +37,6 @@
         android:id="@+id/permtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/usageperm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

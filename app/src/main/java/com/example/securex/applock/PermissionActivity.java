@@ -25,6 +25,9 @@ public class PermissionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(hasUsageStatsPermission(this)){
+            startActivity(new Intent(this,AppLockActivity.class));
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permissionctivity);
 
@@ -34,7 +37,7 @@ public class PermissionActivity extends AppCompatActivity {
 
         if(!needsUsageStatsPermission()) {
             btUsagePermission.setVisibility(View.GONE);
-            tvPermission.setText("OK");
+            tvPermission.setText("PERMISSION GRANTED");
         } else {
             btUsagePermission.setOnClickListener(new View.OnClickListener() {
                 @Override

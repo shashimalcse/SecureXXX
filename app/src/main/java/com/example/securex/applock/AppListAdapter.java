@@ -49,7 +49,7 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewH
         holder.icon.setImageDrawable(s.get(position).getIcon());
         String status = pref.getString(s.get(position).getPackage(),"unlocked");
         boolean mark=false;
-        if(status=="locked"){
+        if(status.equals("locked")){
             mark=true;
         }
         holder.switch1.setChecked(mark);
@@ -58,14 +58,16 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewH
             public void onClick(View v) {
                 if(holder.switch1.isChecked()){
                     editor.putString(s.get(position).getPackage(),"locked");
-                    editor.apply();
+                    editor.commit();
                     holder.switch1.setChecked(true);
                 }
                 else {
                     editor.putString(s.get(position).getPackage(),"unlocked");
-                    editor.apply();
+                    editor.commit();
                     holder.switch1.setChecked(false);
                 }
+                ForegroundToastService.stop(context);
+                ForegroundToastService.start(context);
 
 
             }

@@ -6,18 +6,23 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.TaskStackBuilder;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.securex.BuildConfig;
 import com.example.securex.R;
 import com.rvalerio.fgchecker.AppChecker;
 
@@ -39,6 +44,9 @@ public class ForegroundToastService extends Service {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     List<String> locked_apps;
+    LocalBroadcastManager localBroadcastManager;
+    Context context;
+
 
 
     public static void start(Context context) {
@@ -64,6 +72,9 @@ public class ForegroundToastService extends Service {
         startChecker();
         createNotificationChannel();
         createStickyNotification();
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        context =this;
+
         current_app="";
         prev_app="1";
         unlocked=false;
@@ -97,12 +108,10 @@ public class ForegroundToastService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent notificationIntent = new Intent(this,PermissionActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0);
-
         Notification notification = createStickyNotification();
-
         startForeground(1,notification);
 
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     private void startChecker() {
@@ -118,25 +127,33 @@ public class ForegroundToastService extends Service {
                 .whenOther(new AppChecker.Listener() {
                     @Override
                     public void onForeground(final String packageName) {
+
                         String app= pref.getString("current_app","");
-                        Log.d("PACKAGE",packageName);
-                        Log.d("CURRENT",app);
+
+
                         if(locked_apps.contains(packageName) && !app.equals(packageName)){
 
+                            editor.putString("current_app",packageName);
+                            editor.commit();
+                            current_app=packageName;
+                            Intent intent = new Intent(context,UnlockActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtra("current_app",packageName);
+                            context.startActivity(intent);
+                            Log.d("SHASHIMAL","SHASHIMAL");
 
-                            startActivity(dialogIntent);
-//                            editor.putString("current_app",packageName);
-//                            editor.commit();
-                        current_app=packageName;
+
+
+
+
                      }
-                        else if(!packageName.equals(current_app)){
-//                            editor.putString("current_app","");
-//                            editor.commit();
-//                            current_app="";
+                        if(!packageName.equals(current_app)){
+                            editor.putString("current_app","");
+                            editor.commit();
                         }
                     }
                 })
-                .timeout(100)
+                .timeout(210)
                 .start(this);
     }
 
@@ -181,4 +198,7 @@ public class ForegroundToastService extends Service {
             manager.createNotificationChannel(serviceChannel);
         }
     }
+
+
+
 }
