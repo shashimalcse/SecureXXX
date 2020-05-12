@@ -57,7 +57,7 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         isForget(view);
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
+//        navController = Navigation.findNavController(view);
 
         model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
 
@@ -83,7 +83,7 @@ public class RegistrationPhaseOneFragment extends Fragment implements View.OnCli
                 if(Validation.equals("valid")){
                     model.setUsername(Username);
                     model.setEmail(Email);
-                    navController.navigate(R.id.action_registrationPhaseOneFragment_to_registrationPhaseTwoFragment);
+                    Navigation.findNavController(v).navigate(R.id.action_registrationPhaseOneFragment_to_registrationPhaseTwoFragment);
 
                 }
                 else if(Validation.equals("not valid")){

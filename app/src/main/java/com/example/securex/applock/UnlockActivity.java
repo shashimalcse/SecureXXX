@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.securex.R;
-import com.example.securex.utils.Utils;
+import com.example.securex.applock2.Utils;
 import com.goodiebag.pinview.Pinview;
 
 public class UnlockActivity extends AppCompatActivity {
@@ -22,24 +22,29 @@ public class UnlockActivity extends AppCompatActivity {
 
     String current_app;
     SharedPreferences pref;
+    Pinview pinview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unlock);
         pref = getApplicationContext().getSharedPreferences("com.android.app.users",getApplicationContext().MODE_PRIVATE);
-        Pinview pinview =(Pinview) findViewById(R.id.PinUnlockApp);
-        current_app = getIntent().getStringExtra("current_app");
-
-    pinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
+        pinview =(Pinview) findViewById(R.id.PinUnlockApp);
+        Log.d("APP","UNLOCK");
+        final Utils utils = new Utils(this);
+        pinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
         @Override
         public void onDataEntered(Pinview pinview, boolean fromUser) {
             String pin = pinview.getValue().toString();
-            if(pin.equals(pref.getString("Pin",""))){
+            if(pin.equals(pref.getString("Pin","no"))){
+                Log.d("LATT@",utils.getLastApp());
+//                utils.clearLastApp();
+//               startCurrentHomePackage();
                 finish();
             }
             else{
                 pinview.clearValue();
+
             }
         }
     });
@@ -51,6 +56,30 @@ public class UnlockActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        String pin = pinview.getValue().toString();
+        if(!pin.equals(pref.getString("Pin","no"))){
+            startCurrentHomePackage();
+        }
+        else{
+            finish();
+            super.onBackPressed();}
+        }
+
+
+
+
+    private void startCurrentHomePackage() {
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent,PackageManager.MATCH_DEFAULT_ONLY);
+
+        ActivityInfo activityInfo = resolveInfo.activityInfo;
+        ComponentName componentName = new ComponentName(activityInfo.applicationInfo.packageName,activityInfo.name);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        startActivity(intent);
+        new Utils(getApplicationContext()).clearLastApp();
+        finish();
 
     }
 

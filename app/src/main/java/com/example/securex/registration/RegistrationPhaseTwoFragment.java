@@ -46,7 +46,7 @@ public class RegistrationPhaseTwoFragment extends Fragment implements View.OnCli
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
+//        navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(RegistrationSharedViewModel.class);
 
         binding.phase2next.setOnClickListener(this);
@@ -81,7 +81,8 @@ public class RegistrationPhaseTwoFragment extends Fragment implements View.OnCli
                 Color=binding.colorspinner.getSelectedItem().toString();
                 model.setColor(Color);
                 model.setSize(Size);
-                navController.navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment);
+//                navController.navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment);
+                Navigation.findNavController(v).navigate(R.id.action_registrationPhaseTwoFragment_to_registrationPhaseThreeFragment);
                 break;
         }
 

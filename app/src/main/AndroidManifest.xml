@@ -5,14 +5,11 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-
-
 
     <application
         android:allowBackup="true"
@@ -21,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".applock.UnlockActivity" android:launchMode = "singleTop" android:noHistory="true" ></activity>
+        <activity android:name=".applock2.RecActivity"></activity>
+        <activity
+            android:name=".applock.UnlockActivity" />
         <activity android:name=".applock.PermissionActivity" />
         <activity android:name=".BottomNavActivity" />
         <activity android:name=".applock.AppLockActivity" />
@@ -36,12 +35,32 @@
         </activity>
 
         <service
-            android:process=":newservice"
             android:name=".applock.ForegroundToastService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false"
+            />
+        <receiver android:name=".applock2.ReceiverApplock"
+            android:exported="true"
+            android:enabled="true"/>
+        <receiver android:name=".applock2.RestartServiceWhenStoped"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
 
+        <service android:name="com.example.securex.applock2.ServiceApplock"
+            android:exported="false"
+            android:enabled="true"/>
+        <service android:name="com.example.securex.applock2.ServiceApplockJobIntent"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
+        <uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.test.base" />
+        <uses-library android:name="android.test.mock" />
     </application>
 
 </manifest>

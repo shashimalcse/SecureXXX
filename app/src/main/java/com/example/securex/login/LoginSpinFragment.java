@@ -300,7 +300,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
 
     private void showSuccess() {
 
-        Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
     }
 
     void fingerprint(){

@@ -69,6 +69,6 @@ public class LoginPinFragment extends Fragment {
 
     private void showSuccess() {
 
-        Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
     }
 }

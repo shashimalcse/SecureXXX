@@ -14,6 +14,7 @@ import android.os.Bundle;
 
 import com.example.securex.R;
 import com.example.securex.applock.ForegroundToastService;
+import com.example.securex.applock2.BackgroundManager;
 
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        BackgroundManager.getInstance().init(this).startService();
         if (hasUsageStatsPermission(getApplicationContext())) {
             if (!isServiceRunning()) {
                 ForegroundToastService.start(getBaseContext());

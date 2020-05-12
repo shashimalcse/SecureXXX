@@ -1,13 +1,9 @@
 package com.example.securex.registration;
 
 
-
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class RegistrationPhaseOneFragmentUnitTest {
 

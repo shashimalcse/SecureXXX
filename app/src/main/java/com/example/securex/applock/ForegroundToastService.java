@@ -24,6 +24,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.securex.BuildConfig;
 import com.example.securex.R;
+import com.example.securex.applock2.ReceiverApplock;
 import com.rvalerio.fgchecker.AppChecker;
 
 import java.util.ArrayList;
@@ -128,29 +129,33 @@ public class ForegroundToastService extends Service {
                     @Override
                     public void onForeground(final String packageName) {
 
+
                         String app= pref.getString("current_app","");
+                        Intent intent1 = new Intent(context, ReceiverApplock.class);
+                        sendBroadcast(intent1);
 
 
-                        if(locked_apps.contains(packageName) && !app.equals(packageName)){
-
-                            editor.putString("current_app",packageName);
-                            editor.commit();
-                            current_app=packageName;
-                            Intent intent = new Intent(context,UnlockActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.putExtra("current_app",packageName);
-                            context.startActivity(intent);
-                            Log.d("SHASHIMAL","SHASHIMAL");
-
-
+//                        if(locked_apps.contains(packageName) && !app.equals(packageName)){
+//                            Log.d("APP","CURRENT");
+//                            editor.putString("current_app",packageName);
+//                            editor.commit();
+//                            current_app=packageName;
+//                            Intent intent = new Intent(context,UnlockActivity.class);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                            intent.putExtra("current_app",packageName);
+//                            context.startActivity(intent);
+//                            Log.d("SHASHIMAL","SHASHIMAL");
 
 
 
-                     }
-                        if(!packageName.equals(current_app)){
-                            editor.putString("current_app","");
-                            editor.commit();
-                        }
+
+
+//
+//                     }
+//                        if(!packageName.equals(current_app)){
+//                            editor.putString("current_app","");
+//                            editor.commit();
+//                        }
                     }
                 })
                 .timeout(210)
