@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        BackgroundManager.getInstance().init(this).startService();
+//        BackgroundManager.getInstance().init(this).startService();
         if (hasUsageStatsPermission(getApplicationContext())) {
             if (!isServiceRunning()) {
                 ForegroundToastService.start(getBaseContext());

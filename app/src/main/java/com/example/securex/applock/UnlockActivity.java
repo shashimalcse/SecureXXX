@@ -11,6 +11,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.securex.R;
@@ -82,7 +83,6 @@ public class UnlockActivity extends AppCompatActivity {
         finish();
 
     }
-
 
 
 }
