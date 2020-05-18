@@ -40,7 +40,6 @@ public class UnlockActivity extends AppCompatActivity {
             if(pin.equals(pref.getString("Pin","no"))){
                 Log.d("LATT@",utils.getLastApp());
 //                utils.clearLastApp();
-//               startCurrentHomePackage();
                 finish();
             }
             else{

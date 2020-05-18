@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -33,6 +36,13 @@
         <activity android:name=".applock.AppLockActivity" />
         <activity android:name=".passwordupdate.PasswordUpdateActivity" />
         <activity android:name=".login.LoginActivity" />
+        <activity android:name=".filesecurity.FormatEncryption"></activity>
+        <activity android:name=".filesecurity.TextEncyrpt" />
+        <activity android:name=".filesecurity.FolderEncrypt" />
+        <activity android:name=".filesecurity.AudioEncrypt" />
+        <activity android:name=".filesecurity.VideoEncrypt" />
+        <activity android:name=".filesecurity.ImageEncrypt" />
+        <activity android:name=".filesecurity.Home" />
         <activity android:name=".registration.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
