@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
 import com.example.securex.applock.AppLockActivity;
+import com.example.securex.applock2.RecActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PasswordUpdateActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class PasswordUpdateActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.applock:
-                        startActivity(new Intent(PasswordUpdateActivity.this, AppLockActivity.class));
+                        startActivity(new Intent(PasswordUpdateActivity.this, RecActivity.class));
                         finish();
                         break;
                     case R.id.home:

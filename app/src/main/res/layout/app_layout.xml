@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/icon_app"
@@ -22,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="@+id/icon_app"
         app:layout_constraintEnd_toStartOf="@+id/lock_app"
         app:layout_constraintStart_toEndOf="@+id/icon_app"
@@ -37,6 +39,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/name_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/name_app"
-        app:srcCompat="@drawable/ic_lock_open_black_24dp" />
+        app:srcCompat="@drawable/unlocked" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

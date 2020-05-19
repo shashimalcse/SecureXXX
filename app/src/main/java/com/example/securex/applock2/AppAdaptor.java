@@ -38,7 +38,7 @@ class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
         final String pk = appItems.get(position).getPackageName();
 
         if(utils.isLock(pk)){
-            holder.lock_app.setImageResource(R.drawable.ic_lock_outline_black_24dp);
+            holder.lock_app.setImageResource(R.drawable.ic_lock_black_24dp);
         }
         else{
             holder.lock_app.setImageResource(R.drawable.ic_lock_open_black_24dp);
@@ -52,7 +52,7 @@ class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
                     utils.unLock(pk);
                 }
                 else {
-                    holder.lock_app.setImageResource(R.drawable.ic_lock_outline_black_24dp);
+                    holder.lock_app.setImageResource(R.drawable.ic_lock_black_24dp);
                     utils.lock(pk);
                 }
 
