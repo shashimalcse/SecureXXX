@@ -44,6 +44,12 @@
         <activity android:name=".filesecurity.VideoEncrypt" />
         <activity android:name=".filesecurity.ImageEncrypt" />
         <activity android:name=".filesecurity.Home" />
+        <activity android:name=".scanner.ListPermission"
+            android:parentActivityName=".scanner.Result"></activity>
+
+        <activity android:name=".scanner.Result" />
+        <activity android:name=".scanner.ListAppActivity" />
+
         <activity android:name=".registration.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
