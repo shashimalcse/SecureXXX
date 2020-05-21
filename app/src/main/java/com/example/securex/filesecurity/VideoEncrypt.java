@@ -62,9 +62,10 @@ public class VideoEncrypt extends AppCompatActivity {
     File encDir,decDir,outputFileDec;
     String decLocation;
     private String FILE_NAME_ENC="Enc";
-    String my_key="jdwztahttruvphdm";
     String my_key1,my_key2;
-    String my_spec_key="jdwztahttruvphdm";
+    String defaultKey="encryptK";
+    String defaultKey2="encryptS";
+    String my_spec_key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,13 +155,13 @@ public class VideoEncrypt extends AppCompatActivity {
                     try{
                         outputFileDec = new File(decDir,FILE_NAME_DEC);
                         Encryptor.decryptToFile(my_key2,my_spec_key,encInputStream,new FileOutputStream(outputFileDec));
+                        Toast.makeText(VideoEncrypt.this, "Decrypted with Given Password!", Toast.LENGTH_SHORT).show();
                         video1.setVisibility(View.INVISIBLE);
                         videoPlayer.setVisibility(View.VISIBLE);
                         Uri uri=Uri.parse(decLocation+File.separator+FILE_NAME_DEC);
                         videoView.setVideoURI(uri);
                         videoView.setMediaController(mediaController);
                         mediaController.setAnchorView(videoView);
-                        Toast.makeText(VideoEncrypt.this, decLocation+File.separator+FILE_NAME_DEC, Toast.LENGTH_SHORT).show();
                         btn_enc.setEnabled(true);
                         encInputStream=null;
                         decDir=null;
@@ -250,17 +251,18 @@ public class VideoEncrypt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(encDir!=null && inputStream!=null){
-                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Enc";
-                    if(txt_password.getText().toString().length()==16){
+                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Encrypted";
+                    if(txt_password.getText().toString().length()==8){
                         if(txt_password.getText().toString().equals(txt_passwordConfirm.getText().toString())) {
-                            my_key1 = txt_password.getText().toString();
+                            my_key1 = txt_password.getText().toString()+defaultKey;
+                            my_spec_key = txt_password.getText().toString()+defaultKey2;
                             enc_dialog.dismiss();
                         }else{
-                            Toast.makeText(VideoEncrypt.this,"Confirmation Password Didnt Match",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VideoEncrypt.this,"Confirmation Password Didn't Match",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
-                        Toast.makeText(VideoEncrypt.this,"Password Should Have 16 Characters",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VideoEncrypt.this,"Password Should Have 8 Characters",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
@@ -305,11 +307,12 @@ public class VideoEncrypt extends AppCompatActivity {
             public void onClick(View v) {
                 if(encInputStream!=null && decDir!=null){
                     FILE_NAME_DEC=txt_file_name.getText().toString()+".mp4";
-                    if(txt_password.getText().toString().length()==16){
-                        my_key2=txt_password.getText().toString();
+                    if(txt_password.getText().toString().length()==8){
+                        my_key2=txt_password.getText().toString()+defaultKey;
+                        my_spec_key=txt_password.getText().toString()+defaultKey2;
                         dec_dialog.dismiss();}
                     else{
-                        Toast.makeText(VideoEncrypt.this,"Password Should Have 16 Characters",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VideoEncrypt.this,"Password Should Have 8 Characters",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
