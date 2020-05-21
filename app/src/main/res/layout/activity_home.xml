@@ -8,11 +8,11 @@
     >
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/folder"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/folder"
+        android:background="@drawable/folder2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
@@ -21,11 +21,11 @@
         app:layout_constraintVertical_bias="0.651"></Button>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/img"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/image"
+        android:background="@drawable/image2"
         app:layout_constraintBottom_toTopOf="@+id/video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.703"
@@ -34,11 +34,11 @@
         app:layout_constraintVertical_bias="0.794"></Button>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/video"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/video"
+        android:background="@drawable/vedio2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.706"
@@ -47,12 +47,12 @@
         app:layout_constraintVertical_bias="0.459"></Button>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/audio"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="44dp"
-        android:background="@drawable/audio"
+        android:background="@drawable/audio2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
@@ -61,12 +61,12 @@
         app:layout_constraintVertical_bias="0.492"></Button>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/txt"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_weight="1"
-        android:background="@drawable/text"
+        android:background="@drawable/text2"
         app:layout_constraintBottom_toTopOf="@+id/audio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
@@ -75,12 +75,12 @@
         app:layout_constraintVertical_bias="0.794"></Button>
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/any"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_weight="1"
-        android:background="@drawable/any"
+        android:background="@drawable/any2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.706"
