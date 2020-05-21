@@ -2,12 +2,19 @@ package com.example.securex.filesecurity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
+import com.example.securex.applock2.RecActivity;
+import com.example.securex.passwordupdate.PasswordUpdateActivity;
+import com.example.securex.scanner.ListAppActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
 
@@ -69,6 +76,32 @@ public class Home extends AppCompatActivity {
                 Intent n = new Intent(Home.this,FormatEncryption.class);
                 startActivity(n);
 
+            }
+        });
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
+        bottomNavigationView.setSelectedItemId(R.id.filescurity);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.applock:
+                        startActivity(new Intent(Home.this, RecActivity.class));
+                        finish();
+                        break;
+                    case R.id.profile:
+                        startActivity(new Intent(Home.this, PasswordUpdateActivity.class));
+                        finish();
+                        break;
+                    case R.id.appsecurity:
+                        startActivity(new Intent(Home.this, ListAppActivity.class));
+                        finish();
+                }
+
+                return false;
             }
         });
     }

@@ -20,6 +20,7 @@ import com.example.securex.R;
 import com.example.securex.applock.AppLockActivity;
 import com.example.securex.databinding.FragmentLoginPinBinding;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
+import com.example.securex.filesecurity.Home;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.viewmodel.LoginSharedViewModel;
 import com.goodiebag.pinview.Pinview;
@@ -51,7 +52,7 @@ public class LoginPinFragment extends Fragment {
             public void onDataEntered(Pinview pinview, boolean fromUser) {
                 if(binding.PinUnlock.getValue().equals(model.getUser(getContext()).getPin())){
                     showSuccess();
-                    startActivity(new Intent(getActivity(), BottomNavActivity.class));
+                    startActivity(new Intent(getActivity(), Home.class));
                     getActivity().finish();
                 }
                 else {

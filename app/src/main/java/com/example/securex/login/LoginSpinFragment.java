@@ -36,6 +36,7 @@ import com.example.securex.data.SpinFour;
 import com.example.securex.data.SpinSix;
 import com.example.securex.data.User;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
+import com.example.securex.filesecurity.Home;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.utils.ForgetPassword;
 import com.example.securex.viewmodel.LoginSharedViewModel;
@@ -259,7 +260,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             SelectedFruits = 0;
             MatchingPassword="";
             showSuccess();
-            startActivity(new Intent(getActivity(), BottomNavActivity.class));
+            startActivity(new Intent(getActivity(), Home.class));
             getActivity().finish();
 
         }
@@ -323,7 +324,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(getContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
                 showSuccess();
-                startActivity(new Intent(getActivity(), BottomNavActivity.class));
+                startActivity(new Intent(getActivity(), Home.class));
                 getActivity().finish();
 
             }

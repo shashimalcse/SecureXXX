@@ -10,6 +10,7 @@
 
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/btn_pick_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,15 +21,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_file"
         app:layout_constraintVertical_bias="0.528"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/button"
         android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txt_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select File to Decrypt"
         android:fontFamily="@font/thin"
+        android:text="Select File to Decrypt"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +41,9 @@
         android:id="@+id/txt_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Directory to Save Decrypted File"
         android:fontFamily="@font/thin"
+        android:text="Directory to Save Decrypted File"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -49,6 +52,7 @@
         app:layout_constraintVertical_bias="0.363" />
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/btn_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,8 +62,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_location"
         app:layout_constraintVertical_bias="0.117"
-        android:background="@drawable/buttonshape"
-        android:textColor="@color/white"/>
+        android:background="@drawable/border_button"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/txt_file_name"
@@ -114,13 +118,13 @@
         app:layout_constraintVertical_bias="0.456" />
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/btn_ok"
-        android:layout_width="64dp"
-        android:layout_height="38dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="31dp"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/comfirmbutton"
         android:fontFamily="sans-serif-medium"
-        android:text="OK"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
-        android:background="@drawable/input_field"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:text="Delete After Decrypt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_ok"
