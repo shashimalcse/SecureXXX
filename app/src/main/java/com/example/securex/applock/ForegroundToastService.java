@@ -129,10 +129,11 @@ public class ForegroundToastService extends Service {
                     @Override
                     public void onForeground(final String packageName) {
 
-
+                        if(!current_app.equals(packageName)){
+                            current_app=packageName;
                         String app= pref.getString("current_app","");
                         Intent intent1 = new Intent(context, ReceiverApplock.class);
-                        sendBroadcast(intent1);
+                        sendBroadcast(intent1);}
 
 
 //                        if(locked_apps.contains(packageName) && !app.equals(packageName)){
@@ -152,10 +153,9 @@ public class ForegroundToastService extends Service {
 
 //
 //                     }
-//                        if(!packageName.equals(current_app)){
-//                            editor.putString("current_app","");
-//                            editor.commit();
-//                        }
+                        if(!packageName.equals(current_app)){
+                            current_app="";
+                        }
                     }
                 })
                 .timeout(210)

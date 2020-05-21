@@ -1,6 +1,7 @@
 package com.example.securex.applock2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +23,18 @@ import java.util.List;
 public class RecActivity extends AppCompatActivity {
 
     Button button;
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rec);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // Show alert dialog to the user saying a separate permission is needed
+            // Launch the settings activity if the user prefers
+            Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+            startActivity(myIntent);
+        }
 
         initView();
 
@@ -35,13 +43,13 @@ public class RecActivity extends AppCompatActivity {
     private void initView() {
 
         RecyclerView recyclerView = findViewById(R.id.rv);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         AppAdapter appAdpater = new AppAdapter(this,getAppApps());
         recyclerView.setAdapter(appAdpater);
 
         button = (Button) findViewById(R.id.permisiion);
+        cardView = (CardView) findViewById(R.id.permission_card);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,14 +84,14 @@ public class RecActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    protected void onStart() {
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             if(Utils.checkPermission(this)){
-                button.setVisibility(View.GONE);
+                cardView.setVisibility(View.GONE);
             }
         }
-        super.onResume();
+        super.onStart();
     }
 
 

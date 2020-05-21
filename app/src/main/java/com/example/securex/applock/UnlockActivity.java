@@ -39,7 +39,7 @@ public class UnlockActivity extends AppCompatActivity {
             String pin = pinview.getValue().toString();
             if(pin.equals(pref.getString("Pin","no"))){
                 Log.d("LATT@",utils.getLastApp());
-//                utils.clearLastApp();
+                utils.clearLastApp();
                 finish();
             }
             else{
