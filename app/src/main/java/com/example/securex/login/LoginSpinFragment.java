@@ -23,24 +23,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
-import com.example.securex.applock.AppListAdapter;
-import com.example.securex.applock.AppLockActivity;
 import com.example.securex.data.Spin;
 import com.example.securex.data.SpinEight;
 import com.example.securex.data.SpinFour;
 import com.example.securex.data.SpinSix;
 import com.example.securex.data.User;
 import com.example.securex.databinding.FragmentLoginSpinBinding;
-import com.example.securex.filesecurity.Home;
-import com.example.securex.passwordupdate.PasswordUpdateActivity;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.utils.ForgetPassword;
 import com.example.securex.viewmodel.LoginSharedViewModel;
-import com.example.securex.viewmodel.RegistrationSharedViewModel;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
@@ -260,7 +254,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
             SelectedFruits = 0;
             MatchingPassword="";
             showSuccess();
-            startActivity(new Intent(getActivity(), Home.class));
+            startActivity(new Intent(getActivity(), EncrptorHome.class));
             getActivity().finish();
 
         }
@@ -324,7 +318,7 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(getContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
                 showSuccess();
-                startActivity(new Intent(getActivity(), Home.class));
+                startActivity(new Intent(getActivity(), EncrptorHome.class));
                 getActivity().finish();
 
             }

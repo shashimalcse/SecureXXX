@@ -9,14 +9,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
 import com.example.securex.applock2.RecActivity;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Home extends AppCompatActivity {
+public class EncrptorHome extends AppCompatActivity {
 
 
     @Override
@@ -33,7 +32,7 @@ public class Home extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,ImageEncrypt.class);
+                Intent n = new Intent(EncrptorHome.this,ImageEncrypt.class);
                 startActivity(n);
 
             }
@@ -41,7 +40,7 @@ public class Home extends AppCompatActivity {
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,VideoEncrypt.class);
+                Intent n = new Intent(EncrptorHome.this,VideoEncrypt.class);
                 startActivity(n);
 
             }
@@ -49,7 +48,7 @@ public class Home extends AppCompatActivity {
         audio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,AudioEncrypt.class);
+                Intent n = new Intent(EncrptorHome.this,AudioEncrypt.class);
                 startActivity(n);
 
             }
@@ -57,7 +56,7 @@ public class Home extends AppCompatActivity {
         folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,FolderEncrypt.class);
+                Intent n = new Intent(EncrptorHome.this,FolderEncrypt.class);
                 startActivity(n);
 
             }
@@ -65,7 +64,7 @@ public class Home extends AppCompatActivity {
         txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,TextEncyrpt.class);
+                Intent n = new Intent(EncrptorHome.this,TextEncyrpt.class);
                 startActivity(n);
 
             }
@@ -73,7 +72,7 @@ public class Home extends AppCompatActivity {
         any.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Home.this,FormatEncryption.class);
+                Intent n = new Intent(EncrptorHome.this,FormatEncryption.class);
                 startActivity(n);
 
             }
@@ -89,15 +88,15 @@ public class Home extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.applock:
-                        startActivity(new Intent(Home.this, RecActivity.class));
+                        startActivity(new Intent(EncrptorHome.this, RecActivity.class));
                         finish();
                         break;
                     case R.id.profile:
-                        startActivity(new Intent(Home.this, PasswordUpdateActivity.class));
+                        startActivity(new Intent(EncrptorHome.this, PasswordUpdateActivity.class));
                         finish();
                         break;
                     case R.id.appsecurity:
-                        startActivity(new Intent(Home.this, ListAppActivity.class));
+                        startActivity(new Intent(EncrptorHome.this, ListAppActivity.class));
                         finish();
                 }
 

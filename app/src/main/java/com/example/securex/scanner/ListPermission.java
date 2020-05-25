@@ -3,8 +3,6 @@ package com.example.securex.scanner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.securex.R;
 import com.example.securex.applock2.RecActivity;
-import com.example.securex.filesecurity.Home;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -62,7 +60,7 @@ public class ListPermission extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.filescurity:
-                        startActivity(new Intent(ListPermission.this, Home.class));
+                        startActivity(new Intent(ListPermission.this, EncrptorHome.class));
                         finish();
                 }
 

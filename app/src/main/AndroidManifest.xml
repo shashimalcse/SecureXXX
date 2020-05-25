@@ -43,7 +43,7 @@
         <activity android:name=".filesecurity.AudioEncrypt" />
         <activity android:name=".filesecurity.VideoEncrypt" />
         <activity android:name=".filesecurity.ImageEncrypt" />
-        <activity android:name=".filesecurity.Home" />
+        <activity android:name=".filesecurity.EncrptorHome" />
         <activity android:name=".scanner.ListPermission"
             android:parentActivityName=".scanner.Result"></activity>
 

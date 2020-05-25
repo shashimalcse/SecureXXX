@@ -1,5 +1,7 @@
 package com.example.securex.applock2;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +14,15 @@ import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.securex.R;
+import com.example.securex.filesecurity.EncrptorHome;
+import com.example.securex.passwordupdate.PasswordUpdateActivity;
+import com.example.securex.scanner.ListAppActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,19 +31,15 @@ public class RecActivity extends AppCompatActivity {
 
     Button button;
     CardView cardView;
+    Button displayover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rec);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // Show alert dialog to the user saying a separate permission is needed
-            // Launch the settings activity if the user prefers
-            Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-            startActivity(myIntent);
-        }
 
         initView();
+        setNav();
 
     }
 
@@ -50,6 +53,18 @@ public class RecActivity extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.permisiion);
         cardView = (CardView) findViewById(R.id.permission_card);
+        displayover=(Button) findViewById(R.id.overthedisplay);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+            displayover.setVisibility(View.GONE);
+        }
+        displayover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                startActivity(myIntent);
+            }
+        });
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,15 +98,53 @@ public class RecActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    protected void onResume() {
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            if(Utils.checkPermission(this) && Settings.canDrawOverlays(this)){
+                cardView.setVisibility(View.GONE);
+            }
+        }
+        super.onResume();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onStart() {
 
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP && Settings.canDrawOverlays(this)){
             if(Utils.checkPermission(this)){
                 cardView.setVisibility(View.GONE);
             }
         }
         super.onStart();
+    }
+
+    public void setNav(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
+        bottomNavigationView.setSelectedItemId(R.id.applock);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.profile:
+                        startActivity(new Intent(RecActivity.this, PasswordUpdateActivity.class));
+                        finish();
+                        break;
+                    case R.id.filescurity:
+                        startActivity(new Intent(RecActivity.this, EncrptorHome.class));
+                        finish();
+                    case R.id.appsecurity:
+                        startActivity(new Intent(RecActivity.this, ListAppActivity.class));
+                        finish();
+                }
+
+                return false;
+            }
+        });
     }
 
 

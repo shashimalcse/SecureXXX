@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ParseException;
 import android.os.Bundle;
@@ -26,8 +25,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -38,7 +35,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import com.example.securex.applock2.RecActivity;
-import com.example.securex.filesecurity.Home;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity.PInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,7 +89,7 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                         finish();
                         break;
                     case R.id.filescurity:
-                        startActivity(new Intent(Result.this, Home.class));
+                        startActivity(new Intent(Result.this, EncrptorHome.class));
                         finish();
 
                 }

@@ -2,8 +2,6 @@ package com.example.securex.scanner;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
@@ -15,13 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
 import com.example.securex.applock2.RecActivity;
-import com.example.securex.filesecurity.Home;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -97,7 +93,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
                         finish();
                         break;
                     case R.id.filescurity:
-                        startActivity(new Intent(ListAppActivity.this, Home.class));
+                        startActivity(new Intent(ListAppActivity.this, EncrptorHome.class));
                         finish();
                 }
 
