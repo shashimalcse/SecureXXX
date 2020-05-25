@@ -63,10 +63,11 @@ public class TextEncyrpt extends AppCompatActivity {
     File outputFileDec;
     File encDir,decDir;
     private String FILE_NAME_ENC="Enc";
-    String my_key="jdwztahttruvphdm";
     String my_key1,my_key2;
     File textFile;
-    String my_spec_key="risxjdoxqfhatuph";
+    String defaultKey="encryptK";
+    String defaultKey2="encryptS";
+    String my_spec_key;
 
 
     @Override
@@ -176,7 +177,7 @@ public class TextEncyrpt extends AppCompatActivity {
                     try{
                         outputFileDec = new File(decDir,FILE_NAME_DEC);
                         Encryptor.decryptToFile(my_key2,my_spec_key,encInputStream,new FileOutputStream(outputFileDec));
-                        Toast.makeText(TextEncyrpt.this, "Decrypted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TextEncyrpt.this, "Decrypted with Given Password!", Toast.LENGTH_SHORT).show();
                         btn_enc.setEnabled(true);
                         encInputStream=null;
                         decDir=null;
@@ -265,16 +266,17 @@ public class TextEncyrpt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(encDir!=null && inputStream!=null){
-                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Enc";
-                    if(txt_password.getText().toString().length()==16){
+                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Encrypted";
+                    if(txt_password.getText().toString().length()==8){
                         if(txt_password.getText().toString().equals(txt_passwordConfirm.getText().toString())){
-                            my_key1=txt_password.getText().toString();
+                            my_key1=txt_password.getText().toString()+defaultKey;
+                            my_spec_key=txt_password.getText().toString()+defaultKey2;
                             enc_dialog.dismiss();}
                         else{
-                            Toast.makeText(TextEncyrpt.this,"Confirmation Password Didnt Match",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TextEncyrpt.this,"Confirmation Password Didn't Match",Toast.LENGTH_SHORT).show();
                         }
                     }else {
-                        Toast.makeText(TextEncyrpt.this,"Password should have 16 characters",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TextEncyrpt.this,"Password should have 8 characters",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
@@ -308,8 +310,9 @@ public class TextEncyrpt extends AppCompatActivity {
             public void onClick(View v) {
                 if(encInputStream!=null && decDir!=null){
                     FILE_NAME_DEC=txt_file_name.getText().toString()+".txt";
-                    if(txt_password.getText().toString().length()==16){
-                        my_key2=txt_password.getText().toString();
+                    if(txt_password.getText().toString().length()==8){
+                        my_key2=txt_password.getText().toString()+defaultKey;
+                        my_spec_key=txt_password.getText().toString()+defaultKey2;
                         dec_dialog.dismiss();
                     }else{
                         Toast.makeText(TextEncyrpt.this,"Fill all the fields",Toast.LENGTH_SHORT).show();
