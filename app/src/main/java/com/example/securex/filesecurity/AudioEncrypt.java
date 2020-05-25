@@ -67,10 +67,12 @@ public class AudioEncrypt extends AppCompatActivity {
     InputStream inputStream,encInputStream;
     File outputFileDec;
     File encDir,decDir;
-    private String FILE_NAME_ENC="Enc";
+    private String FILE_NAME_ENC="Encrypted";
     private String FILE_NAME_DEC ="DecryptedAudio.mp3";
     String my_key1,my_key2;
-    String my_spec_key="risxjdoxqfhatuph";
+    String defaultKey="encryptK";
+    String defaultKey2="encryptS";
+    String my_spec_key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,7 +227,7 @@ public class AudioEncrypt extends AppCompatActivity {
                         totalTime=player.getDuration();
                         outputFileDec = new File(decDir,FILE_NAME_DEC);
                         Encryptor.decryptToFile(my_key2,my_spec_key,encInputStream,new FileOutputStream(outputFileDec));
-                        Toast.makeText(AudioEncrypt.this, "Decrypted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AudioEncrypt.this, "Decrypted with Given Password!", Toast.LENGTH_SHORT).show();
 
                         if(audioPath!=null){
                             try {
@@ -342,16 +344,17 @@ public class AudioEncrypt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(encDir!=null && inputStream!=null){
-                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Enc";
-                    if(txt_password.getText().toString().length()==16){
+                    FILE_NAME_ENC=txt_file_name.getText().toString()+"Encrypted";
+                    if(txt_password.getText().toString().length()==8){
                         if(txt_password.getText().toString().equals(txt_passwordConfirm.getText().toString())){
-                            my_key1=txt_password.getText().toString();
+                            my_key1=txt_password.getText().toString()+defaultKey;
+                            my_spec_key=txt_password.getText().toString()+defaultKey2;
                             enc_dialog.dismiss();}
                         else{
-                            Toast.makeText(AudioEncrypt.this,"Confirmation Password Didnt Match",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AudioEncrypt.this,"Confirmation Password Didn't Match",Toast.LENGTH_SHORT).show();
                         }
                     }else {
-                        Toast.makeText(AudioEncrypt.this,"Password should have 16 characters",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AudioEncrypt.this,"Password should have 8 characters",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
@@ -396,11 +399,12 @@ public class AudioEncrypt extends AppCompatActivity {
             public void onClick(View v) {
                 if(encInputStream!=null && decDir!=null){
                     FILE_NAME_DEC=txt_file_name.getText().toString()+".mp3";
-                    if(txt_password.getText().toString().length()==16){
-                        my_key2=txt_password.getText().toString();
+                    if(txt_password.getText().toString().length()==8){
+                        my_key2=txt_password.getText().toString()+defaultKey;
+                        my_spec_key=txt_password.getText().toString()+defaultKey2;
                         dec_dialog.dismiss();
                     }else{
-                        Toast.makeText(AudioEncrypt.this,"Password Have 16 Characters",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AudioEncrypt.this,"Password Have 8 Characters",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
