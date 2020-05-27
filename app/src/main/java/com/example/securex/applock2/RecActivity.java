@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity;
@@ -137,9 +138,14 @@ public class RecActivity extends AppCompatActivity {
                     case R.id.filescurity:
                         startActivity(new Intent(RecActivity.this, EncrptorHome.class));
                         finish();
+                        break;
                     case R.id.appsecurity:
                         startActivity(new Intent(RecActivity.this, ListAppActivity.class));
                         finish();
+                        break;
+                    case R.id.home:
+                        startActivity(new Intent(RecActivity.this, AboutActivity.class));
+                        break;
                 }
 
                 return false;

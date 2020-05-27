@@ -9,8 +9,11 @@ import android.view.MenuItem;
 
 import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock.AppLockActivity;
 import com.example.securex.applock2.RecActivity;
+import com.example.securex.filesecurity.EncrptorHome;
+import com.example.securex.scanner.ListAppActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PasswordUpdateActivity extends AppCompatActivity {
@@ -32,9 +35,18 @@ public class PasswordUpdateActivity extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.home:
-                        startActivity(new Intent(PasswordUpdateActivity.this, BottomNavActivity.class));
+                        startActivity(new Intent(PasswordUpdateActivity.this, AboutActivity.class));
                         finish();
                         break;
+                    case R.id.filescurity:
+                        startActivity(new Intent(PasswordUpdateActivity.this, EncrptorHome.class));
+                        finish();
+                        break;
+                    case R.id.appsecurity:
+                        startActivity(new Intent(PasswordUpdateActivity.this, ListAppActivity.class));
+                        finish();
+                        break;
+
 
                 }
                 return false;

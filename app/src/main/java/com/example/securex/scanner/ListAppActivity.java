@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
 import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
@@ -95,6 +96,10 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
                     case R.id.filescurity:
                         startActivity(new Intent(ListAppActivity.this, EncrptorHome.class));
                         finish();
+                        break;
+                    case R.id.home:
+                        startActivity(new Intent(ListAppActivity.this, AboutActivity.class));
+                        break;
                 }
 
                 return false;

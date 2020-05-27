@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity;
@@ -98,6 +99,12 @@ public class EncrptorHome extends AppCompatActivity {
                     case R.id.appsecurity:
                         startActivity(new Intent(EncrptorHome.this, ListAppActivity.class));
                         finish();
+                        break;
+                    case R.id.home:
+                        startActivity(new Intent(EncrptorHome.this, AboutActivity.class));
+                        break;
+//                        finish();
+
                 }
 
                 return false;
