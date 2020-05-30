@@ -1,5 +1,6 @@
 package com.example.securex.passwordupdate;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,11 @@ public class UpdateMenuFragment extends Fragment implements View.OnClickListener
         binding.chnageemailbutton.setOnClickListener(this);
         binding.chnagegrappassbutton.setOnClickListener(this);
         binding.changepinbutton.setOnClickListener(this);
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("com.android.app.users",getContext().MODE_PRIVATE);
+
+        binding.username.setText(sharedPreferences.getString("Username","User"));
+        binding.email.setText(sharedPreferences.getString("Email","Email"));
 
 
     }
