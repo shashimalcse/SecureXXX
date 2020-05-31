@@ -3,6 +3,9 @@ package com.example.securex.scanner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +26,18 @@ import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.tensorflow.lite.Interpreter;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ListPermission extends AppCompatActivity {
 
@@ -35,13 +49,23 @@ public class ListPermission extends AppCompatActivity {
     TextView naslov,critical;
     int position;
     ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_list_app);
-        setContentView(R.layout.fragment_screen_slide_page);
+        setContentView(R.layout.fragment_screen_slide_page2);
 
         listView = (ListView) findViewById(R.id.Lista);
+
+        Classifier classifier = Classifier.getInstance(this);
+
+        String packageName = getIntent().getStringExtra("packageName");
+        List<String> per = getGrantedPermissions(packageName);
+        Log.d("permissions",Integer.toString(per.size()));
+        int cls=classifier.predict(per);
+        Log.d("CLASS",Integer.toString(cls));
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
         bottomNavigationView.setSelectedItemId(R.id.appsecurity);
@@ -142,33 +166,7 @@ public class ListPermission extends AppCompatActivity {
 
 
                 paket.setText(data.get(position));
-                //progressBar.setProgress(50);
 
-                /*ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar2);
-                mProgress.setVisibility(View.VISIBLE);
-                mProgress.setMax(100);*/
-
-                //LinearLayout view = (LinearLayout) findViewById(R.id.)
-
-
-
-
-
-
-                    /*progressBar.getProgress();
-                    progressBar.setMax(100);
-                    progressBar.setProgress(75);*/
-
-
-
-
-                //critical.setText(""+1000);
-                //critical.setText(""+data.get(position).critical.size());
-
-                //progressBar.setMax(100);
-                //mProgress.setProgress(50);
-                //progressBar.setProgress(50);
-                //critical.setBackgroundColor(Color.parseColor(getClor(data.get(position).critical.size()*100/19)));
 
 
 
@@ -182,6 +180,20 @@ public class ListPermission extends AppCompatActivity {
             return convertView;
 
         }
+    }
+
+    List<String> getGrantedPermissions(final String appPackage) {
+        List<String> granted = new ArrayList<String>();
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo(appPackage, PackageManager.GET_PERMISSIONS);
+            for (int i = 0; i < pi.requestedPermissions.length; i++) {
+                if ((pi.requestedPermissionsFlags[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0) {
+                    granted.add(pi.requestedPermissions[i]);
+                }
+            }
+        } catch (Exception e) {
+        }
+        return granted;
     }
 
 }

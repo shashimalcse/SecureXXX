@@ -133,6 +133,7 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                         //bundle.putStringArrayList("critical",lista.get(position).critical);
                         //intent.putExtra("size1",String.valueOf(lista.get(position).critical.size()));
                         intent.putExtra("size1",lista.get(position).critical);
+                        intent.putExtra("packageName",lista.get(position).pname);
                         startActivity(intent);
                     }
                 }
@@ -278,6 +279,7 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                     slika.setImageDrawable(icon);
                     //result.setText(data.get(position).appname);
                     naslov.setText(data.get(position).appname);
+
 
 //                    paket.setText(data.get(position).pname);
                     //critical.setText(""+1000);

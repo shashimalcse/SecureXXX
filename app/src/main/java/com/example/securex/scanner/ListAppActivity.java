@@ -66,7 +66,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.main);
 
         final ListAppActivity something = this;
-
+        setBotNav();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -77,34 +77,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
                 b.setOnClickListener(something);
             }
         }, 500);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
-        bottomNavigationView.setSelectedItemId(R.id.appsecurity);
 
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.applock:
-                        startActivity(new Intent(ListAppActivity.this, RecActivity.class));
-                        finish();
-                        break;
-                    case R.id.profile:
-                        startActivity(new Intent(ListAppActivity.this, PasswordUpdateActivity.class));
-                        finish();
-                        break;
-                    case R.id.filescurity:
-                        startActivity(new Intent(ListAppActivity.this, EncrptorHome.class));
-                        finish();
-                        break;
-                    case R.id.home:
-                        startActivity(new Intent(ListAppActivity.this, AboutActivity.class));
-                        break;
-                }
-
-                return false;
-            }
-        });
 
 
 
@@ -410,6 +383,37 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
             };
 
         }
+    }
+
+    public void setBotNav(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
+        bottomNavigationView.setSelectedItemId(R.id.appsecurity);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.applock:
+                        startActivity(new Intent(ListAppActivity.this, RecActivity.class));
+                        finish();
+                        break;
+                    case R.id.profile:
+                        startActivity(new Intent(ListAppActivity.this, PasswordUpdateActivity.class));
+                        finish();
+                        break;
+                    case R.id.filescurity:
+                        startActivity(new Intent(ListAppActivity.this, EncrptorHome.class));
+                        finish();
+                        break;
+                    case R.id.home:
+                        startActivity(new Intent(ListAppActivity.this, AboutActivity.class));
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 
 
