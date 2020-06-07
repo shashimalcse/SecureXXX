@@ -18,10 +18,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".about.AboutActivity"></activity>
@@ -36,7 +36,7 @@
         <activity android:name=".BottomNavActivity" />
         <activity android:name=".applock.AppLockActivity" />
         <activity android:name=".passwordupdate.PasswordUpdateActivity" />
-        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.LoginActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".filesecurity.FormatEncryption" />
         <activity android:name=".filesecurity.TextEncyrpt" />
         <activity android:name=".filesecurity.FolderEncrypt" />
@@ -46,9 +46,10 @@
         <activity android:name=".filesecurity.EncrptorHome" />
         <activity
             android:name=".scanner.ListPermission"
-            android:parentActivityName=".scanner.Result" />
-        <activity android:name=".scanner.Result" />
-        <activity android:name=".scanner.ListAppActivity" />
+            android:parentActivityName=".scanner.Result"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scanner.Result"  android:screenOrientation="portrait"/>
+        <activity android:name=".scanner.ListAppActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".registration.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

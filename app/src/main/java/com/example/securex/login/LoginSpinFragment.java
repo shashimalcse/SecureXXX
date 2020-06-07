@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -87,9 +89,15 @@ public class LoginSpinFragment extends Fragment implements View.OnClickListener 
         binding.spinrightbutton.setOnClickListener(this);
         binding.fruitpickupbutton.setOnClickListener(this);
         binding.gotopinbutton.setOnClickListener(this);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)){
+            fingerprint();
+            binding.biobutton.setOnClickListener(this);
+        }
+        else{
+            binding.biobutton.setVisibility(View.GONE);
+        }
 
-        fingerprint();
-        binding.biobutton.setOnClickListener(this);
         binding.forgetbutton.setOnClickListener(this);
     }
 
