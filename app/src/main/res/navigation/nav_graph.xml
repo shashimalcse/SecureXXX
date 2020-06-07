@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_registrationPhaseFourFragment_to_registrationPhaseThreeFragment"
             app:destination="@id/registrationPhaseThreeFragment" />
+        <action
+            android:id="@+id/action_registrationPhaseFourFragment_to_loginIntroFragment"
+            app:destination="@id/loginIntroFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationPhaseOneFragment"
@@ -70,5 +73,13 @@
         <action
             android:id="@+id/action_registrationPhaseTwoFragment_to_registrationPhaseOneFragment"
             app:destination="@id/registrationPhaseOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginIntroFragment"
+        android:name="com.example.securex.registration.LoginIntroFragment"
+        android:label="LoginIntroFragment" >
+        <action
+            android:id="@+id/action_loginIntroFragment_to_registrationPhaseFiveFragment"
+            app:destination="@id/registrationPhaseFiveFragment" />
     </fragment>
 </navigation>

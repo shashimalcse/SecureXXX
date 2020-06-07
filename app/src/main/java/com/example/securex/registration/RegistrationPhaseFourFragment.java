@@ -92,7 +92,7 @@ public class RegistrationPhaseFourFragment extends Fragment implements View.OnCl
                 if(!ConfirmPassword.equals("")){
                     if(ConfirmPassword.equals(model.getPassword().getValue().toString())){
 
-                        navController.navigate(R.id.action_registrationPhaseFourFragment_to_registrationPhaseFiveFragment);
+                        navController.navigate(R.id.action_registrationPhaseFourFragment_to_loginIntroFragment);
 
                     }
                     else {

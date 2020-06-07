@@ -121,4 +121,7 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite:1.13.1'
 
 
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+
+
 }
