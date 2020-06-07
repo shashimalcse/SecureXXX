@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -20,12 +21,14 @@ import android.widget.Button;
 
 import com.example.securex.R;
 import com.example.securex.about.AboutActivity;
+import com.example.securex.applock.ForegroundToastService;
 import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class RecActivity extends AppCompatActivity {
@@ -106,6 +109,9 @@ public class RecActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             if(Utils.checkPermission(this) && Settings.canDrawOverlays(this)){
                 cardView.setVisibility(View.GONE);
+                if (!isServiceRunning()) {
+                    ForegroundToastService.start(getBaseContext());
+                }
             }
         }
         super.onResume();
@@ -117,6 +123,9 @@ public class RecActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP && Settings.canDrawOverlays(this)){
             if(Utils.checkPermission(this)){
                 cardView.setVisibility(View.GONE);
+                if (!isServiceRunning()) {
+                    ForegroundToastService.start(getBaseContext());
+                }
             }
         }
         super.onStart();
@@ -151,6 +160,26 @@ public class RecActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private boolean isServiceRunning () {
+        boolean serviceRunning = false;
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
+        Iterator<ActivityManager.RunningServiceInfo> i = l.iterator();
+        while (i.hasNext()) {
+            ActivityManager.RunningServiceInfo runningServiceInfo = i
+                    .next();
+
+            if (runningServiceInfo.service.getClassName().equals("com.example.securex.applock.ForegroundToastService")) {
+                serviceRunning = true;
+
+                if (runningServiceInfo.foreground) {
+                    //service run in foreground
+                }
+            }
+        }
+        return serviceRunning;
     }
 
 

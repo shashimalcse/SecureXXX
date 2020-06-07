@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,7 +50,8 @@ public class ListPermission extends AppCompatActivity {
     TextView naslov,critical;
     int position;
     ListView listView;
-
+    Button malware;
+    Classifier classifier;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +59,33 @@ public class ListPermission extends AppCompatActivity {
         setContentView(R.layout.fragment_screen_slide_page2);
 
         listView = (ListView) findViewById(R.id.Lista);
+        malware = (Button) findViewById(R.id.malware);
+        classifier = Classifier.getInstance(this);
+        malware.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        Classifier classifier = Classifier.getInstance(this);
 
-        String packageName = getIntent().getStringExtra("packageName");
-        List<String> per = getGrantedPermissions(packageName);
-        Log.d("permissions",Integer.toString(per.size()));
-        int cls=classifier.predict(per);
-        Log.d("CLASS",Integer.toString(cls));
+
+
+                String packageName = getIntent().getStringExtra("packageName");
+                List<String> per = getGrantedPermissions(packageName);
+                Log.d("permissions",Integer.toString(per.size()));
+                int cls=classifier.predict(per);
+                Log.d("CLASS",Integer.toString(cls));
+
+                MalwareBottomSheet bottomSheet = new MalwareBottomSheet();
+                Bundle bundle = new Bundle();
+                bundle.putInt("pred",cls);
+                bottomSheet.setArguments(bundle);
+                bottomSheet.show(getSupportFragmentManager(),"bottomSheet");
+
+
+
+            }
+        });
+
+
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);

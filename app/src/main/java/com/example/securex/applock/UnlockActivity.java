@@ -8,11 +8,13 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.securex.R;
 import com.example.securex.applock2.Utils;
@@ -33,6 +35,17 @@ public class UnlockActivity extends AppCompatActivity {
         pinview =(Pinview) findViewById(R.id.PinUnlockApp);
         Log.d("APP","UNLOCK");
         final Utils utils = new Utils(this);
+
+        String last =  utils.getLastApp();
+        Drawable icon = null;
+        try {
+            icon = getApplicationContext().getPackageManager().getApplicationIcon(last);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        ImageView iconView = (ImageView) findViewById(R.id.app_icon);
+        iconView.setImageDrawable(icon);
+
         pinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
         @Override
         public void onDataEntered(Pinview pinview, boolean fromUser) {

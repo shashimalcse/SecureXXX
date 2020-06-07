@@ -3,10 +3,33 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/predict"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Harmful Permissions"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@drawable/border_button"
+        android:id="@+id/malware"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Check malware"
+        app:layout_constraintBottom_toTopOf="@+id/bottomnav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/Lista"
@@ -17,30 +40,28 @@
         android:divider="@color/black"
 
         android:dividerHeight="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomnav"
+        app:layout_constraintBottom_toTopOf="@+id/malware"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView21">
 
     </ListView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/bottomnav"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_nav"
-        android:layout_alignParentBottom="true">
+        app:menu="@menu/menu_nav">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
