@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Color;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,12 +17,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
 import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
@@ -52,12 +55,18 @@ public class ListPermission extends AppCompatActivity {
     ListView listView;
     Button malware;
     Classifier classifier;
+    ProgressBar progressBar;
+    TextView percent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_list_app);
         setContentView(R.layout.fragment_screen_slide_page2);
-
+        percent = (TextView) findViewById(R.id.percent);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setScaleY(4);
+        progressBar.getProgressDrawable().setColorFilter(
+                Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
         listView = (ListView) findViewById(R.id.Lista);
         malware = (Button) findViewById(R.id.malware);
         classifier = Classifier.getInstance(this);
@@ -107,6 +116,9 @@ public class ListPermission extends AppCompatActivity {
                     case R.id.filescurity:
                         startActivity(new Intent(ListPermission.this, EncrptorHome.class));
                         finish();
+                    case R.id.home:
+                        startActivity(new Intent(ListPermission.this, AboutActivity.class));
+                        break;
                 }
 
                 return false;
@@ -138,6 +150,21 @@ public class ListPermission extends AppCompatActivity {
 
             }
         }
+        Intent intent = getIntent();
+        Bundle bundle = this.getIntent().getExtras();
+        ArrayList<String> count = intent.getStringArrayListExtra("size1");
+        progressBar.setProgress(count.size()*100/14);
+        if(count.size()*100/14> 50){
+            progressBar.getProgressDrawable().setColorFilter(
+                    Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
+        else{
+            progressBar.getProgressDrawable().setColorFilter(
+                    Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
+        int percentange = (int) count.size()*100/14;
+        percent.setText(Integer.toString(percentange)+"%");
+
 
     }
     public class CustomAdapter extends BaseAdapter {

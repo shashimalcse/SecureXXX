@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
 import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
@@ -91,6 +92,9 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                     case R.id.filescurity:
                         startActivity(new Intent(Result.this, EncrptorHome.class));
                         finish();
+                    case R.id.home:
+                        startActivity(new Intent(Result.this, AboutActivity.class));
+                        break;
 
                 }
 

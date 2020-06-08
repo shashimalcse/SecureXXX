@@ -409,6 +409,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
                     case R.id.home:
                         startActivity(new Intent(ListAppActivity.this, AboutActivity.class));
                         break;
+
                 }
 
                 return false;
