@@ -56,9 +56,11 @@ public class FolderEncrypt extends AppCompatActivity {
     File encDir,decDir;
     String encDirectory,decDirectory;
     private String FILE_NAME_DEC ="DecryptedFile.zip";
-    private String FILE_NAME_ENC="Enc";
-    String my_key="jdwztahttruvphdm";
-    String my_spec_key="risxjdoxqfhatuph";
+    private String FILE_NAME_ENC="EncryptedFile";
+    String my_key1,my_key2;
+    String defaultKey="encryptK";
+    String defaultKey2="encryptS";
+    String my_spec_key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +98,7 @@ public class FolderEncrypt extends AppCompatActivity {
                 if(inputStream!=null&&encDir!=null){
                     try {
                         File outputFileEnc=new File(encDir,FILE_NAME_ENC);
-                        Encryptor.encryptToFile(my_key,my_spec_key,is,new FileOutputStream(outputFileEnc));
+                        Encryptor.encryptToFile(my_key1,my_spec_key,is,new FileOutputStream(outputFileEnc));
                         Toast.makeText(FolderEncrypt.this,"Ecrypted!!",Toast.LENGTH_SHORT).show();
                         btn_dec.setEnabled(true);
                         inputStream=null;
@@ -127,7 +129,7 @@ public class FolderEncrypt extends AppCompatActivity {
                 if(encInputStream!=null&&decDir!=null){
                     try{
                         File outputFileDec = new File(decDir,FILE_NAME_DEC);
-                        Encryptor.decryptToFile(my_key,my_spec_key,encInputStream,new FileOutputStream(outputFileDec));
+                        Encryptor.decryptToFile(my_key2,my_spec_key,encInputStream,new FileOutputStream(outputFileDec));
                         zipArchive.unzip(decDir+"/"+FILE_NAME_DEC,decDirectory,"");
                         outputFileDec.delete();
                         Toast.makeText(FolderEncrypt.this, "Decrypted", Toast.LENGTH_SHORT).show();
@@ -144,6 +146,8 @@ public class FolderEncrypt extends AppCompatActivity {
                         e.printStackTrace();
                     } catch (NoSuchPaddingException e) {
                         e.printStackTrace();
+                    } catch(Exception e){
+                        Toast.makeText(FolderEncrypt.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                     }}else{
                     showDecPopup();
                 }
@@ -217,16 +221,23 @@ public class FolderEncrypt extends AppCompatActivity {
             public void onClick(View v) {
                 if(encDirectory!=""){
                     if(txt_password.getText().toString().equals(txt_passwordConfirm.getText().toString())){
-                        FILE_NAME_ENC=txt_file_name.getText().toString()+"Enc";
-                        zipArchive.zip(encDirectory,encDirectory+"/file.zip","");
-                        fileZip = new File(encDirectory+"/file.zip");
-                        try {
-                            inputStream=new DataInputStream(new FileInputStream(fileZip));
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
+                        if(txt_password.getText().toString().length()==8){
+                            FILE_NAME_ENC=txt_file_name.getText().toString()+"Encrypted";
+                            zipArchive.zip(encDirectory,encDirectory+"/file.zip","");
+                            fileZip = new File(encDirectory+"/file.zip");
+                            my_key1=txt_password.getText()+defaultKey;
+                            my_spec_key=txt_password.getText()+defaultKey2;
+                            try {
+                                inputStream=new DataInputStream(new FileInputStream(fileZip));
+                                fileZip.delete();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(FolderEncrypt.this, encDirectory+" Converted to Zip and Select", Toast.LENGTH_SHORT).show();
+                            enc_dialog.dismiss();}
+                        else{
+                            Toast.makeText(FolderEncrypt.this, "Password should have 8 characters", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(FolderEncrypt.this, encDirectory+" Converted to Zip and Select", Toast.LENGTH_SHORT).show();
-                        enc_dialog.dismiss();
                     }else{
                         Toast.makeText(FolderEncrypt.this, encDirectory+" Confirmation Password Didnt Match", Toast.LENGTH_SHORT).show();
                     }
@@ -270,6 +281,8 @@ public class FolderEncrypt extends AppCompatActivity {
             public void onClick(View v) {
                 if(encInputStream!=null && decDir!=null){
                     FILE_NAME_DEC=txt_file_name.getText().toString()+"Folder.zip";
+                    my_key2=txt_password.getText()+defaultKey;
+                    my_spec_key=txt_password.getText()+defaultKey2;
                     dec_dialog.dismiss();
                 }
                 else{
