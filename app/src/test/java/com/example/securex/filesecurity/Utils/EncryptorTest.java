@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-
+import ir.mahdi.mzip.zip.ZipArchive;
 import javax.crypto.NoSuchPaddingException;
 
 import static org.junit.Assert.*;
@@ -35,5 +35,23 @@ public class EncryptorTest {
         InputStream is=new FileInputStream(f);
         File outputFileEnc=new File("src/test/resources","test2.mp3");
         Encryptor.decryptToFile("1111111111111111","1111111111111111",is,new FileOutputStream(outputFileEnc));
+    }
+    @Test
+    public void encryptToFolder() throws IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+        ZipArchive zipArchive = new ZipArchive();
+        zipArchive.zip("src/test/resources/Folder","src/test/resources"+"/FolderZip.zip","");
+        File fileZip = new File("src/test/resources","FolderZip.zip");
+        InputStream is=new FileInputStream(fileZip);
+        File outputFileEnc=new File("src/test/resources","FolderEncrypted");
+        Encryptor.encryptToFile("1111111111111111","1111111111111111",is,new FileOutputStream(outputFileEnc));
+    }
+    @Test
+    public void decryptToFolder() throws IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+        File f=new File("src/test/resources","FolderEncrypted");
+        ZipArchive zipArchive = new ZipArchive();
+        InputStream is=new FileInputStream(f);
+        File outputFileEnc=new File("src/test/resources/Folder","DecryptedFolder.zip");
+        Encryptor.decryptToFile("1111111111111111","1111111111111111",is,new FileOutputStream(outputFileEnc));
+        zipArchive.unzip("src/test/resources/Folder/DecryptedFolder.zip","src/test/resources/Folder","");
     }
 }
