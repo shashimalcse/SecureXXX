@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.codekidlabs.storagechooser.StorageChooser;
 import com.example.securex.R;
 import com.example.securex.filesecurity.Utils.Encryptor;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -54,7 +55,8 @@ public class ImageEncrypt extends AppCompatActivity {
     //imageencryptor attribute
     Button btn_enc,btn_dec;
     String encSource;
-    ImageView imageView,image1;
+    ImageView image1;
+    PhotoView imageView;
     Bitmap bitmap;
     InputStream encInputStream;
     File encDir,decDir;
@@ -70,7 +72,7 @@ public class ImageEncrypt extends AppCompatActivity {
         setContentView(R.layout.activity_image_encrypt);
         btn_enc=(Button)findViewById(R.id.btn_encrypt);
         btn_dec=(Button)findViewById(R.id.btn_decrypt);
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = (PhotoView) findViewById(R.id.imageView);
         image1 = (ImageView)findViewById(R.id.image1);
 
         //dialog box initiate
