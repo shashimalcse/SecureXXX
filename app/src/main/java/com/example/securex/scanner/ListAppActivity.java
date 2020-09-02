@@ -2,8 +2,6 @@ package com.example.securex.scanner;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
@@ -15,13 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.securex.BottomNavActivity;
 import com.example.securex.R;
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
-import com.example.securex.filesecurity.Home;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -69,7 +66,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.main);
 
         final ListAppActivity something = this;
-
+        setBotNav();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -80,30 +77,7 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
                 b.setOnClickListener(something);
             }
         }, 500);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
-        bottomNavigationView.setSelectedItemId(R.id.appsecurity);
 
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.applock:
-                        startActivity(new Intent(ListAppActivity.this, RecActivity.class));
-                        finish();
-                        break;
-                    case R.id.profile:
-                        startActivity(new Intent(ListAppActivity.this, PasswordUpdateActivity.class));
-                        finish();
-                        break;
-                    case R.id.filescurity:
-                        startActivity(new Intent(ListAppActivity.this, Home.class));
-                        finish();
-                }
-
-                return false;
-            }
-        });
 
 
 
@@ -409,6 +383,38 @@ public class ListAppActivity extends AppCompatActivity implements View.OnClickLi
             };
 
         }
+    }
+
+    public void setBotNav(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnav);
+        bottomNavigationView.setSelectedItemId(R.id.appsecurity);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.applock:
+                        startActivity(new Intent(ListAppActivity.this, RecActivity.class));
+                        finish();
+                        break;
+                    case R.id.profile:
+                        startActivity(new Intent(ListAppActivity.this, PasswordUpdateActivity.class));
+                        finish();
+                        break;
+                    case R.id.filescurity:
+                        startActivity(new Intent(ListAppActivity.this, EncrptorHome.class));
+                        finish();
+                        break;
+                    case R.id.home:
+                        startActivity(new Intent(ListAppActivity.this, AboutActivity.class));
+                        break;
+
+                }
+
+                return false;
+            }
+        });
     }
 
 

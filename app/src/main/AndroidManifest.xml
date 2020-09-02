@@ -12,44 +12,44 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"  />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".applock2.RecActivity"></activity>
+        <activity android:name=".about.AboutActivity"></activity>
+        <activity android:name=".applock2.RecActivity" />
         <activity
             android:name=".applock.UnlockActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTop"
             android:showOnLockScreen="true"
-            android:turnScreenOn="true"/>
+            android:turnScreenOn="true" />
         <activity android:name=".applock.PermissionActivity" />
         <activity android:name=".BottomNavActivity" />
         <activity android:name=".applock.AppLockActivity" />
         <activity android:name=".passwordupdate.PasswordUpdateActivity" />
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".filesecurity.FormatEncryption"></activity>
+        <activity android:name=".login.LoginActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".filesecurity.FormatEncryption" />
         <activity android:name=".filesecurity.TextEncyrpt" />
         <activity android:name=".filesecurity.FolderEncrypt" />
         <activity android:name=".filesecurity.AudioEncrypt" />
         <activity android:name=".filesecurity.VideoEncrypt" />
         <activity android:name=".filesecurity.ImageEncrypt" />
-        <activity android:name=".filesecurity.Home" />
-        <activity android:name=".scanner.ListPermission"
-            android:parentActivityName=".scanner.Result"></activity>
-
-        <activity android:name=".scanner.Result" />
-        <activity android:name=".scanner.ListAppActivity" />
-
+        <activity android:name=".filesecurity.EncrptorHome" />
+        <activity
+            android:name=".scanner.ListPermission"
+            android:parentActivityName=".scanner.Result"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scanner.Result"  android:screenOrientation="portrait"/>
+        <activity android:name=".scanner.ListAppActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".registration.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,26 +61,30 @@
         <service
             android:name=".applock.ForegroundToastService"
             android:enabled="true"
-            android:exported="false"
-            />
-        <receiver android:name=".applock2.ReceiverApplock"
-            android:exported="true"
-            android:enabled="true"/>
-        <receiver android:name=".applock2.RestartServiceWhenStoped"
+            android:exported="false" />
+
+        <receiver
+            android:name=".applock2.ReceiverApplock"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".applock2.RestartServiceWhenStoped"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.example.securex.applock2.ServiceApplock"
-            android:exported="false"
-            android:enabled="true"/>
-        <service android:name="com.example.securex.applock2.ServiceApplockJobIntent"
+        <service
+            android:name=".applock2.ServiceApplock"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".applock2.ServiceApplockJobIntent"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <uses-library android:name="android.test.runner" />
         <uses-library android:name="android.test.base" />

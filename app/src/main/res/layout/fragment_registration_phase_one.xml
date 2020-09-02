@@ -25,8 +25,8 @@
 
             android:id="@+id/username"
             android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/inputbackgroud"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName"
@@ -41,9 +41,9 @@
         <EditText
             android:id="@+id/email"
             android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_background"
             android:layout_marginTop="52dp"
-            android:background="@drawable/inputbackgroud"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"

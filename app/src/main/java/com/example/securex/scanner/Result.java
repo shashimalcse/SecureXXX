@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ParseException;
 import android.os.Bundle;
@@ -26,8 +25,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -37,8 +34,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.example.securex.about.AboutActivity;
 import com.example.securex.applock2.RecActivity;
-import com.example.securex.filesecurity.Home;
+import com.example.securex.filesecurity.EncrptorHome;
 import com.example.securex.passwordupdate.PasswordUpdateActivity;
 import com.example.securex.scanner.ListAppActivity.PInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,8 +90,11 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                         finish();
                         break;
                     case R.id.filescurity:
-                        startActivity(new Intent(Result.this, Home.class));
+                        startActivity(new Intent(Result.this, EncrptorHome.class));
                         finish();
+                    case R.id.home:
+                        startActivity(new Intent(Result.this, AboutActivity.class));
+                        break;
 
                 }
 
@@ -136,6 +137,7 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                         //bundle.putStringArrayList("critical",lista.get(position).critical);
                         //intent.putExtra("size1",String.valueOf(lista.get(position).critical.size()));
                         intent.putExtra("size1",lista.get(position).critical);
+                        intent.putExtra("packageName",lista.get(position).pname);
                         startActivity(intent);
                     }
                 }
@@ -281,6 +283,7 @@ public class Result extends AppCompatActivity implements ActionBar.TabListener{
                     slika.setImageDrawable(icon);
                     //result.setText(data.get(position).appname);
                     naslov.setText(data.get(position).appname);
+
 
 //                    paket.setText(data.get(position).pname);
                     //critical.setText(""+1000);
